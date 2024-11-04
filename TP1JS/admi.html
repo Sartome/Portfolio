@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat Admission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 20%;
+        }
+        .success {
+            background-color: green;
+            color: white;
+        }
+        .fail {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body id="result">
+    <h1 id="message"></h1>
+    <p id="average"></p>
+    <script>
+        // Récupère la moyenne depuis l'URL
+        const params = new URLSearchParams(window.location.search);
+        const moyenne = parseFloat(params.get('moyenne'));
+        const messageElement = document.getElementById('message');
+        const averageElement = document.getElementById('average');
+        const resultElement = document.getElementById('result');
+
+        // Affiche le message et change le style selon la moyenne
+        if (moyenne >= 10) {
+            messageElement.textContent = 'Admis';
+            resultElement.classList.add('success');
+        } else {
+            messageElement.textContent = 'Recalé';
+            resultElement.classList.add('fail');
+        }
+
+        // Affiche la moyenne obtenue en dessous du message
+        averageElement.textContent = 'Moyenne obtenue : ' + moyenne.toFixed(2);
+    </script>
+</body>
+</html>

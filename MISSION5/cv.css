@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.section {
+    width: 780px; /* Largeur fixe pour la section */
+    border-radius: 5%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 5px solid #3388CC;
+    padding: 5px;
+    overflow: hidden;
+    margin: 0 auto 70px; /* Centre la section et espace de 70px en bas */
+}
+
+.boxleft {
+    margin: auto;
+    width: 30%;
+    float: left;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.boxcenter {
+    width: 55%;
+    float: left;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+li {
+    margin: 10px;
+}
+
+.boxright {
+    width: 25%;
+    float: right;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: right;
+}

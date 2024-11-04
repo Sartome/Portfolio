@@ -1,0 +1,126 @@
+body {
+    background-color: #1E2D52;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    animation: fadeIn 1s ease;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    color: #fff;
+}
+
+h1 {
+    font-size: 30px;
+    animation: slideIn 0.5s ease forwards;
+}
+
+h2 {
+    font-size: 30px;
+    animation: slideIn 0.7s ease forwards;
+}
+
+h3 {
+    font-size: 24px;
+    animation: slideIn 0.9s ease forwards;
+}
+
+.card {
+    background-color: #4b3575;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    max-width: 300px;
+    margin: 50px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transform: scale(0);
+    animation: scaleIn 0.5s ease forwards;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 5px 0 15px;
+    animation: slideIn 0.7s ease forwards;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    animation: slideIn 0.9s ease forwards;
+}
+
+.social-links a {
+    color: #16AAD9;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1E7AEE;
+}
+
+.bouton {
+    display: inline-block;
+    background-color: #302378;
+    color: rgb(184, 184, 184);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bouton:hover {
+    background-color: #1E7AEE;
+    transform: translateY(-2px);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
