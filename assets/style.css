@@ -6,6 +6,12 @@ body {
     animation: fadeIn 1s ease;
 }
 
+header {
+    background-color: #293f79;
+    padding: 10px;
+    font-size: 20px;
+}
+
 h1,
 h2,
 h3 {
@@ -113,53 +119,55 @@ textarea {
     resize: none;
 }
 
-.container {
+.container-columns {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.card {
-    background-color: #5f4972;
-    border-radius: 20px;
+    justify-content: space-around;
     padding: 20px;
+}
+
+.column {
+    flex: 1;
+    max-width: 45%;
+    background-color: rgba(41, 63, 121, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.column h2 {
     text-align: center;
-    color: #fff;
-    max-width: 300px;
-    margin: 0 auto;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    transform: scale(0);
-    animation: scaleIn 0.5s ease forwards;
-}
-
-.card h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    font-size: 20px;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
-.card p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-.social-links a {
-    color: #16AAD9;
+.bouton {
+    display: block;
+    background-color: rgba(48, 35, 120, 0.9);
+    color: rgb(184, 184, 184);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
     text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.social-links a:hover {
-    color: #1E7AEE;
+.bouton:hover {
+    background-color: #1E7AEE;
+    transform: translateY(-2px);
+}
+
+.body-gif {
+    background: url('fond.gif') no-repeat center center fixed;
+    background-size: cover;
 }
 
 @media (max-width: 768px) {
+    .container-columns {
+        flex-direction: column;
+    }
 
     form,
     .card {
@@ -173,58 +181,6 @@ textarea {
     button {
         font-size: 14px;
     }
-}
-
-.bouton {
-    display: inline-block;
-    background-color: #302378;
-    color: rgb(184, 184, 184);
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    margin: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.bouton:hover {
-    background-color: #1E7AEE;
-    transform: translateY(-2px);
-}
-
-div {
-    display: flex;
-    align-items: center;
-}
-
-.fruits-container,
-.civilite-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.fruit-item,
-.civilite-item {
-    display: flex;
-    align-items: center;
-}
-
-.fruit-item label,
-.civilite-item label {
-    margin-left: 5px;
-}
-
-br {
-    margin: 10px 0;
-    content: "";
-}
-
-.center {
-    display: flex;
-    justify-content: center;
 }
 
 @keyframes fadeIn {
