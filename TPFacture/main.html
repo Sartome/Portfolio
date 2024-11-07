@@ -4,10 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculatrice</title>
 </head>
 
 <body>
+    <table>
+        <tr>
+            <td>Article</td>
+            <td>Prix unitaire</td>
+            <td>Quantité</td>
+            <td>Résultat</td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Article 1"></td>
+            <td><input type="number" placeholder="Prix unitaire 1"></td>
+            <td><input type="number" placeholder="Quantité 1"></td>
+            <td><input type="text" placeholder="Résultat 1" readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Article 2"></td>
+            <td><input type="number" placeholder="Prix unitaire 2"></td>
+            <td><input type="number" placeholder="Quantité 2"></td>
+            <td><input type="text" placeholder="Résultat 2" readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Article 3"></td>
+            <td><input type="number" placeholder="Prix unitaire 3"></td>
+            <td><input type="number" placeholder="Quantité 3"></td>
+            <td><input type="text" placeholder="Résultat 3" readonly></td>
+        </tr>
+        <tr>
+            <td><label>Total TTC</label></td>
+            <td></td>
+            <td></td>
+            <td><input type="number" placeholder="Total TTC" readonly></td>
+        </tr>
+        <tr>
+            <td><button id="calculateButton">Calculer</button></td>
+            <td colspan="3"><button id="resetButton">Reset</button></td>
+        </tr>
+    </table>
+    <a href="../index.html" class="bouton">Retour</a>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
