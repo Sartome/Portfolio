@@ -1,7 +1,6 @@
 document.getElementById('calculateButton').addEventListener('click', () => {
     let total = 0;
     
-    // Calculate for all 3 rows
     for(let i = 1; i <= 3; i++) {
         let price = document.querySelector(`input[placeholder="Prix unitaire ${i}"]`).value * 1;
         let quantity = document.querySelector(`input[placeholder="Quantité ${i}"]`).value * 1;
@@ -15,7 +14,6 @@ document.getElementById('calculateButton').addEventListener('click', () => {
 });
 
 document.getElementById('resetButton').addEventListener('click', () => {
-    // Reset all inputs
     const fields = ['Article', 'Prix unitaire', 'Quantité', 'Résultat'];
     
     for(let i = 1; i <= 3; i++) {
