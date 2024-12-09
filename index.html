@@ -1,48 +1,63 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
 <head>
-  <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/style.css" type="text/css" media="screen">
-  <title>ACCUEIL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - El arrass Marwane</title>
+    <link rel="preload" href="assets/style.css" as="style">
+    <link rel="stylesheet" href="assets/style.css">
+    <meta name="description" content="Portfolio of Marwane El arrass - Practical Works and Missions">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
-
-<header>
-  <center>
-    <h1>El arrass Marwane</h1>
-  </center>
-</header>
-
 <body class="body-gif">
-  <div class="container-columns">
-    <div class="column">
-      <h2>Travaux Pratiques</h2>
-      <a href="TP1/metier.html" class="bouton">TP1</a>
-      <a href="TP2/paghome.html" class="bouton">TP2</a>
-      <a href="TP3/tp3acceuil.html" class="bouton">TP3</a>
-      <a href="TP4/exoindex.html" class="bouton">TP4</a>
-      <a href="TP5/missindex.html" class="bouton">TP5</a>
-      <a href="TP6/main.html" class="bouton">TP6</a>
-      <a href="TP7/main.html" class="bouton">TP7</a>
-      <a href="TP1JS/tp1_js.html" class="bouton">TP1-js</a>
-      <a href="TP1BD/BDindex.html" class="bouton">TP1-bd</a>
-      <a href="TPFacture/main.html" class="bouton">TPFacture</a>
-    </div>
-    <div class="column">
-      <h2>Missions</h2>
-      <a href="MISSION1/presentation.html" class="bouton">Mission1</a>
-      <a href="MISSION2/paghome.html" class="bouton">Mission2</a>
-      <a href="MISSION3/paghome.html" class="bouton">Mission3</a>
-      <a href="MISSION4/Mission 3.html" class="bouton">Mission4</a>
-    </div>
-  </div>
+    <header>
+        <h1>El arrass Marwane</h1>
+        <p class="subtitle">Développeur Web | Étudiant</p>
+    </header>
+    
+    <main>
+        <div class="container-columns">
+            <section class="column">
+                <h2>Travaux Pratiques</h2>
+                <nav aria-label="Travaux Pratiques">
+                    <div class="button-grid">
+                        <a href="TP1/metier.html" class="bouton" aria-label="Travaux Pratiques 1">TP1</a>
+                        <a href="TP2/paghome.html" class="bouton" aria-label="Travaux Pratiques 2">TP2</a>
+                        <a href="TP3/tp3acceuil.html" class="bouton" aria-label="Travaux Pratiques 3">TP3</a>
+                        <a href="TP4/exoindex.html" class="bouton" aria-label="Travaux Pratiques 4">TP4</a>
+                        <a href="TP5/missindex.html" class="bouton" aria-label="Travaux Pratiques 5">TP5</a>
+                        <a href="TP6/main.html" class="bouton" aria-label="Travaux Pratiques 6">TP6</a>
+                        <a href="TP7/main.html" class="bouton" aria-label="Travaux Pratiques 7">TP7</a>
+                        <a href="TP1JS/tp1_js.html" class="bouton" aria-label="Travaux Pratiques JavaScript">TP1-js</a>
+                        <a href="TP1BD/BDindex.html" class="bouton" aria-label="Travaux Pratiques Base de Données">TP1-bd</a>
+                        <a href="TPFacture/main.html" class="bouton" aria-label="Travaux Pratiques Facture">TPFacture</a>
+                    </div>
+                </nav>
+            </section>
+            
+            <section class="column">
+                <h2>Missions</h2>
+                <nav aria-label="Missions">
+                    <div class="button-grid">
+                        <a href="MISSION1/presentation.html" class="bouton" aria-label="Mission 1">Mission1</a>
+                        <a href="MISSION2/paghome.html" class="bouton" aria-label="Mission 2">Mission2</a>
+                        <a href="MISSION3/paghome.html" class="bouton" aria-label="Mission 3">Mission3</a>
+                        <a href="MISSION4/Mission 3.html" class="bouton" aria-label="Mission 4">Mission4</a>
+                    </div>
+                </nav>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <a href="TP1/localisation.html" class="bouton" aria-label="Nous trouver">Nous trouver</a>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn" class="social-icon">LinkedIn</a>
+                <a href="#" aria-label="GitHub" class="social-icon">GitHub</a>
+                <a href="#" aria-label="Email" class="social-icon">Contact</a>
+            </div>
+        </div>
+    </footer>
 </body>
-
-<footer>
-  <a href="TP1/localisation.html" class="bouton">Nous trouver</a>
-</footer>
-</body>
-
 </html>

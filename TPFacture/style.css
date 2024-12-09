@@ -9,6 +9,11 @@
     --transition-speed: 0.3s;
 }
 
+h1{
+    text-align: center;
+    color: white;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
