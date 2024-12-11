@@ -1,9 +1,14 @@
 :root {
-    --primary-color: #3388CC;
-    --text-color: #000000;
-    --background-color: #FFFFFF;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-}
+    --primary-color: #007bff;
+    --text-color: #f3f3f3;
+    --background: linear-gradient(135deg, #474747, #131b36);
+    --shadow-color: #b3acf2;
+    --accent-primary: #007bff;
+    --text-light: #f3f3f3;
+    --spacing-md: 10px;
+    --spacing-lg: 20px;
+    --border-radius-sm: 10px;
+    --transition-smooth: 0.3s;
 
 * {
     box-sizing: border-box;
@@ -14,7 +19,7 @@
 body {
     font-family: 'Arial', 'Helvetica', sans-serif;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background: var(--background);
     line-height: 1.6;
 }
 
@@ -29,6 +34,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 4px 10px var(--shadow-color);
     border: 5px solid var(--primary-color);
+    background: var(--background);
     padding: 20px;
     margin: 0 auto 70px;
 }
@@ -63,6 +69,21 @@ h1 {
 li {
     margin: 10px 0;
     list-style-position: inside;
+}
+
+.bouton {
+    background-color: var(--accent-primary);
+    color: var(--text-light);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.bouton:hover {
+    background-color: var(--accent-secondary); /* Assuming --accent-secondary is defined elsewhere */
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 768px) {
