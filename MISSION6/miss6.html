@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="pdf-container">
+        <div class="pdf-viewer">
+            <div class="pdf-header">
+                <div class="pdf-navigation">
+                    <button class="pdf-control-btn" id="backBtn">
+                        <span class="btn-icon">←</span> Back
+                    </button>
+                    <div class="pdf-title">Attestation SEC-NUM</div>
+                </div>
+                <div class="pdf-controls">
+                    <button class="pdf-control-btn" id="zoomInBtn">Zoom In</button>
+                    <button class="pdf-control-btn" id="zoomOutBtn">Zoom Out</button>
+                    <button class="pdf-control-btn" id="downloadBtn">Download</button>
+                </div>
+            </div>
+            <iframe 
+                src="../assets/attestation.pdf" 
+                class="pdf-iframe" 
+                title="PDF Document"
+            ></iframe>
+        </div>
+    </div>
+
+    <script src="pdf-viewer.js"></script>
+</body>
+</html>
