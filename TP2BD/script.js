@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     exportSQLBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = 'client.sql';
+        window.location.href = 'clients.sql';
     });
 
     downloadSchemaBtn.addEventListener('click', function (e) {
