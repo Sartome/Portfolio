@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const viewDataBtn = document.getElementById('viewData');
     const exportSQLBtn = document.getElementById('exportSQL');
     const downloadSchemaBtn = document.getElementById('downloadSchema');
-
+    const showDetailsBtn = document.getElementById('showDetails');
 
     const clientsData = [
         { id_client: 1, nom: 'Dupont', prenom: 'Marie', email: 'marie.dupont@example.com', date_inscription: '2023-01-10' },
@@ -65,6 +65,16 @@ document.addEventListener('DOMContentLoaded', function () {
     downloadSchemaBtn.addEventListener('click', function (e) {
         e.preventDefault();
         window.location.href = 'capture.png';
+    });
+
+    showDetailsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const link = document.createElement('a');
+        link.href = 'capture.png';
+        link.download = 'capture.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     });
 
     closeBtn.addEventListener('click', function () {
