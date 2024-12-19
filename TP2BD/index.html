@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Commandes - Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Base de données Gestion des Commandes</h1>
+        <p class="subtitle">Structure et Documentation</p>
+    </header>
+
+    <div class="container-columns">
+        <div class="column">
+            <h2>Modèle Relationnel</h2>
+            <div class="screenshot-container">
+                <img src="capture.png" alt="Modèle relationnel de la base de données">
+            </div>
+            <div class="button-group">
+                <a href="capture.png" download class="bouton" id="downloadSchema">Voir L'image</a>
+            </div>
+        </div>
+
+        <div class="column">
+            <h2>Structure SQL - Table Clients</h2>
+            <div class="sql-content">
+                <pre>
+CREATE TABLE `clients` (
+  `id_client` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `prenom` varchar(100) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `date_inscription` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                </pre>
+            </div>
+            <div class="button-group">
+                <a href="clients.sql" download class="bouton" id="exportSQL">Exporter SQL</a>
+                <a href="#" class="bouton" id="viewData">Apercus</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Données des clients</h2>
+            <div class="table-container">
+            </div>
+        </div>
+    </div>
+    <a href="../index.html" class="bouton">Retour</a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
