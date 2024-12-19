@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('modal');
     const closeBtn = document.querySelector('.close');
-    const viewDataBtn = document.getElementById('viewData');
     const exportSQLBtn = document.getElementById('exportSQL');
     const downloadSchemaBtn = document.getElementById('downloadSchema');
     const showDetailsBtn = document.getElementById('showDetails');
@@ -49,13 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return table;
     }
 
-    viewDataBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const tableContainer = document.querySelector('.table-container');
-        tableContainer.innerHTML = '';
-        tableContainer.appendChild(createClientTable());
-        modal.style.display = 'block';
-    });
 
     exportSQLBtn.addEventListener('click', function (e) {
         e.preventDefault();
