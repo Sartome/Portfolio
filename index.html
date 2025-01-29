@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - El arrass Marwane</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link rel="preload" href="assets/style.css" as="style">
     <link rel="stylesheet" href="assets/style.css">
     <meta name="description" content="Portfolio of Marwane El arrass - Practical Works and Missions">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body class="body-gif">
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="noise noise-moving"></div>
+    
     <header>
-        <h1>El arrass Marwane</h1>
+        <h1 data-splitting>El arrass Marwane</h1>
         <p class="subtitle">Développeur Web | Étudiant</p>
     </header>
     
+    <!-- Rest of your existing body content remains the same -->
     <main>
         <div class="container-columns">
             <section class="column">
@@ -55,11 +62,16 @@
         <div class="footer-content">
             <a href="TP1/localisation.html" class="bouton" aria-label="Nous trouver">Nous trouver</a>
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn" class="social-icon">LinkedIn</a>
-                <a href="#" aria-label="GitHub" class="social-icon">GitHub</a>
-                <a href="#" aria-label="Email" class="social-icon">Contact</a>
+                <a href="https://www.linkedin.com/in/marwane-el-arrass-1b545b323/" aria-label="LinkedIn" class="social-icon">LinkedIn</a>
+                <a href="https://github.com/Sartome" aria-label="GitHub" class="social-icon">GitHub</a>
+                <a href="elarrassmarwane@gmail.com" aria-label="Email" class="social-icon">Contact</a>
             </div>
         </div>
     </footer>
+
+    <script src='https://unpkg.com/splitting/dist/splitting.min.js'></script>
+    <script>
+        Splitting();
+    </script>
 </body>
 </html>
