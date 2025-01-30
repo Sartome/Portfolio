@@ -1,0 +1,178 @@
+:root {
+    --primary-bg: #121725;
+    --secondary-bg: #1E2D52;
+    --accent-primary: #16AAD9;
+    --accent-secondary: #1E7AEE;
+    --text-light: #ffffff;
+    --text-dark: #121725;
+    --text-muted: #e0e0e0;
+    --form-bg: rgba(41, 63, 121, 0.95);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --success-color: #4CAF50;
+    --success-hover: #45a049;
+    --table-header: rgba(22, 170, 217, 0.1);
+    --table-row-hover: rgba(30, 122, 238, 0.05);
+}
+
+body {
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 2rem;
+}
+
+/* Form Container */
+form {
+    max-width: 1000px;
+    margin: 2rem auto;
+    background-color: var(--form-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--table-header);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+/* Form Elements */
+input, select, textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    color: var(--text-light);
+    width: 100%;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(22, 170, 217, 0.2);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--text-light);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Grid Layout for Form Sections */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    form {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: var(--text-dark);
+    }
+
+    form {
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    button {
+        display: none;
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Module</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Invoice Form -->
+    <form id="invoice-form">
+        <h1>Invoice</h1>
+        <table id="invoice-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="invoice-line">
+                    <td><input type="text" class="desc"></td>
+                    <td><input type="number" class="qte"></td>
+                    <td><input type="number" class="prix"></td>
+                    <td><span class="line-total">0</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" id="add-line">Add Line</button>
+        <button type="button" id="fill-random">Fill Automatically</button>
+        <button type="button" id="calculate">Calculate</button>
+        <div>
+            <label for="subtotal">Subtotal:</label>
+            <span id="subtotal">0</span>
+        </div>
+        <div>
+            <label for="discount">Discount (%):</label>
+            <input type="number" id="discount" value="0">
+        </div>
+        <div>
+            <label for="tax-rate">Tax Rate (%):</label>
+            <input type="number" id="tax-rate" value="0">
+        </div>
+        <div>
+            <label for="shipping">Shipping:</label>
+            <input type="number" id="shipping" value="0">
+        </div>
+        <div>
+            <label for="total">Total:</label>
+            <span id="total">0</span>
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

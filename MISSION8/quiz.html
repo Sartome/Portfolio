@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Quizz</h1>
+    <form id="quiz-form">
+        <!-- Example question -->
+        <div class="question">
+            <p>Question 1: What is the capital of France?</p>
+            <label><input type="checkbox" name="q1" value="Paris"> Paris</label>
+            <label><input type="checkbox" name="q1" value="London"> London</label>
+            <label><input type="checkbox" name="q1" value="Berlin"> Berlin</label>
+        </div>
+        <!-- Add more questions here -->
+        <button type="button" onclick="testqcm()">Correction</button>
+        <button type="button" onclick="showAnswers()">Corrigé</button>
+        <button type="reset">Effacer</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
