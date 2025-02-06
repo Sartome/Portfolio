@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Invoice Form -->
     <form id="invoice-form">
-        <h1>Invoice</h1>
+        <h1>Table</h1>
         <table id="invoice-table">
             <thead>
                 <tr>
                     <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Quantiter</th>
+                    <th>Prix</th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -28,23 +27,23 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" id="add-line">Add Line</button>
-        <button type="button" id="fill-random">Fill Automatically</button>
-        <button type="button" id="calculate">Calculate</button>
+        <button type="button" id="add-line">Ajouter une ligne</button>
+        <button type="button" id="fill-random">Remplire aléatoirement</button>
+        <button type="button" id="calculate">Calculer</button>
         <div>
-            <label for="subtotal">Subtotal:</label>
+            <label for="subtotal">Total:</label>
             <span id="subtotal">0</span>
         </div>
         <div>
-            <label for="discount">Discount (%):</label>
+            <label for="discount">Reduction (%):</label>
             <input type="number" id="discount" value="0">
         </div>
         <div>
-            <label for="tax-rate">Tax Rate (%):</label>
+            <label for="tax-rate">Taux (%):</label>
             <input type="number" id="tax-rate" value="0">
         </div>
         <div>
-            <label for="shipping">Shipping:</label>
+            <label for="shipping">Livraison:</label>
             <input type="number" id="shipping" value="0">
         </div>
         <div>
