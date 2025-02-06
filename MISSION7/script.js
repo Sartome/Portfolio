@@ -28,6 +28,36 @@ const exercises = [
                 result: num1 * num2
             };
         }
+    },
+    {
+        title: "Exercice 3",
+        description: "Créer une fonction qui retourne la soustraction de deux nombres.",
+        solution: `function soustraction(a, b) {
+    return a - b;
+}`,
+        validate: (input1, input2) => {
+            const num1 = parseFloat(input1);
+            const num2 = parseFloat(input2);
+            return {
+                isValid: !isNaN(num1) && !isNaN(num2),
+                result: num1 - num2
+            };
+        }
+    },
+    {
+        title: "Exercice 4",
+        description: "Créer une fonction qui retourne la division de deux nombres.",
+        solution: `function division(a, b) {
+    return a / b;
+}`,
+        validate: (input1, input2) => {
+            const num1 = parseFloat(input1);
+            const num2 = parseFloat(input2);
+            return {
+                isValid: !isNaN(num1) && !isNaN(num2) && num2 !== 0,
+                result: num1 / num2
+            };
+        }
     }
 ];
 
