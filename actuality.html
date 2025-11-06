@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#16AAD9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <title>Actualités Hardware & Software - Portfolio El arrass Marwane</title>
+    <meta name="description" content="Dernières actualités technologiques en temps réel - Hardware, Software, Gaming et IA">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/Logo_Vilgenis.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/actuality.css">
+    <link rel="stylesheet" href="assets/modern-features.css">
+</head>
+<body class="body-gif">
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="noise noise-moving"></div>
+
+    <div class="back-to-home">
+        <a href="index.html" class="back-btn">
+            ← Retour à l'accueil
+        </a>
+    </div>
+    
+    <header>
+        <h1>Actualités Hardware & Software</h1>
+        <p class="subtitle">Dernières nouvelles technologiques en temps réel</p>
+    </header>
+    
+    <main>
+        <div class="news-container">
+            <div class="controls-section">
+                <div class="filter-section">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">Toutes</button>
+                        <button class="filter-btn" data-category="hardware">Hardware</button>
+                        <button class="filter-btn" data-category="software">Software</button>
+                        <button class="filter-btn" data-category="gaming">Gaming</button>
+                        <button class="filter-btn" data-category="ai">IA & Tech</button>
+                    </div>
+                </div>
+                <button class="refresh-btn" id="refreshBtn">
+                    <span class="refresh-icon">🔄</span>
+                    Actualiser
+                </button>
+            </div>
+
+            <div class="last-updated" id="lastUpdated"></div>
+
+            <div class="news-grid" id="news-container">
+                <div class="loading">Chargement des actualités...</div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 El arrass Marwane - Portfolio</p>
+            <p style="font-size: 0.85rem; margin-top: 10px;">Actualités provenant de sources certifiées</p>
+        </div>
+    </footer>
+
+    <script src="assets/security.js"></script>
+    <script src="assets/modern-features.js"></script>
+    <script src="assets/actuality.js"></script>
+</body>
+</html>

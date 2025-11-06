@@ -3,13 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - El arrass Marwane</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <meta name="theme-color" content="#16AAD9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>Portfolio - El arrass Marwane | Développeur Web</title>
+    <meta name="description" content="Portfolio professionnel de Marwane El arrass - Développeur Web full-stack spécialisé en technologies modernes. Découvrez mes projets, compétences et travaux pratiques.">
+    <meta name="keywords" content="portfolio, développeur web, full-stack, Marwane El arrass, web development, JavaScript, HTML, CSS">
+    <meta name="author" content="Marwane El arrass">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/Sartome">
+    <meta property="og:title" content="Portfolio - El arrass Marwane">
+    <meta property="og:description" content="Portfolio professionnel de Marwane El arrass - Développeur Web">
+    <meta property="og:image" content="assets/Logo_Vilgenis.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/Sartome">
+    <meta property="twitter:title" content="Portfolio - El arrass Marwane">
+    <meta property="twitter:description" content="Portfolio professionnel de Marwane El arrass - Développeur Web">
+    <meta property="twitter:image" content="assets/Logo_Vilgenis.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/Logo_Vilgenis.png">
+    <link rel="apple-touch-icon" href="assets/Logo_Vilgenis.png">
+    
+    <!-- Preload critical assets -->
     <link rel="preload" href="assets/style.css" as="style">
+    <link rel="preload" href="assets/modern-features.css" as="style">
+    <link rel="preload" href="assets/fond.gif" as="image">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
-    <meta name="description" content="Portfolio of Marwane El arrass - Practical Works and Missions">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="assets/modern-features.css">
 </head>
 <body class="body-gif">
     <audio id="background-music" autoplay loop>
@@ -24,6 +55,7 @@
     <header>
         <h1 data-splitting>El arrass Marwane</h1>
         <p class="subtitle">Développeur Web | Étudiant</p>
+        <a href="actuality.html" class="bouton">Actualités</a>
     </header>
     
     <main>
@@ -69,9 +101,9 @@
         <div class="footer-content">
             <a href="TP1/localisation.html" class="bouton" aria-label="Nous trouver">Nous trouver</a>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/marwane-el-arrass-1b545b323/" aria-label="LinkedIn" class="social-icon">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/marwane-el-arrass/" aria-label="LinkedIn" class="social-icon">LinkedIn</a>
                 <a href="https://github.com/Sartome" aria-label="GitHub" class="social-icon">GitHub</a>
-                <a href="elarrassmarwane@gmail.com" aria-label="Email" class="social-icon">Contact</a>
+                <a href="mailto:elarrassmarwane@gmail.com" aria-label="Email" class="social-icon">Contact</a>
             </div>
         </div>
     </footer>
@@ -80,5 +112,7 @@
     <script>
         Splitting();
     </script>
+    <script src="assets/security.js"></script>
+    <script src="assets/modern-features.js"></script>
 </body>
 </html>
