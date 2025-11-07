@@ -1,106 +1,133 @@
-# 🚀 Portfolio Professionnel - Marwane El arrass
+# 🚀 Portfolio Professionnel MVC - Marwane El arrass
 
 [![GitHub](https://img.shields.io/badge/GitHub-Sartome-blue?style=flat&logo=github)](https://github.com/Sartome)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Marwane%20El%20arrass-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/marwane-el-arrass-1b545b323/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Marwane%20El%20arrass-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/marwane-el-arrass/)
 
-Portfolio moderne et dynamique d'un développeur web full-stack, conçu avec les dernières technologies et les meilleures pratiques de développement.
+Portfolio moderne et professionnel construit avec une architecture MVC, sécurité renforcée et design contemporain. Refonte complète avec TailwindCSS, PHP moderne et best practices 2024.
 
 ## ✨ Fonctionnalités Principales
 
-### 🎨 Design Moderne
-- **Interface utilisateur fluide** avec animations et transitions sophistiquées
-- **Thème clair/sombre** avec basculement dynamique
-- **Design responsive** optimisé pour tous les appareils
-- **Effets visuels** : scanlines, parallax, glassmorphism
-- **Animations CSS3** avancées avec performance optimisée
+### 🏗️ Architecture MVC Moderne
+- **Séparation des responsabilités** : Modèle-Vue-Contrôleur
+- **Routing dynamique** avec URLs propres et SEO-friendly
+- **Controllers dédiés** pour chaque section (CV, Projets, Veille, etc.)
+- **Views réutilisables** avec layouts et composants
+- **Configuration centralisée** dans des fichiers dédiés
 
-### 📱 Progressive Web App (PWA)
-- **Installation sur appareil** - Ajoutez le portfolio à votre écran d'accueil
-- **Mode hors ligne** - Fonctionne même sans connexion internet
-- **Service Worker** pour mise en cache intelligente
-- **Manifest.json** configuré avec métadonnées complètes
-- **Push notifications** prêtes à l'emploi
+### 🎨 Design Moderne avec TailwindCSS
+- **Interface élégante** avec glassmorphism et gradients
+- **Design responsive** optimisé mobile-first
+- **Animations fluides** avec transitions CSS3
+- **Dark theme** professionnel et moderne
+- **Icônes SVG** pour performances optimales
 
-### 🔒 Sécurité Renforcée
-- **Protection XSS** - Encodage HTML et validation des entrées
-- **Sanitisation des URLs** - Prévention des protocoles dangereux
-- **Content Security Policy (CSP)** - Protection contre les injections
-- **Rate limiting** - Limitation des requêtes API
-- **CSRF tokens** - Protection contre les attaques cross-site
-- **Validation d'images** - Uniquement HTTPS autorisé
-- **Monitoring DOM** - Détection des tentatives d'injection
+### 🔒 Sécurité Avancée
+- **Content Security Policy (CSP)** appliqué via headers
+- **Protection XSS** avec sanitisation des entrées/sorties
+- **CSRF tokens** pour les formulaires
+- **Headers de sécurité** : X-Frame-Options, X-Content-Type-Options
+- **Rate limiting** pour prévenir les abus
+- **Validation stricte** des données utilisateur
 
-### 📰 Actualités Dynamiques
-- **Flux RSS en temps réel** via NewsAPI
-- **Filtres par catégorie** : Hardware, Software, Gaming, IA
-- **Sources vérifiées** : TechCrunch, The Verge, Wired, etc.
-- **Actualisation automatique** toutes les 15 minutes
-- **Images de fallback** si source indisponible
-- **Gestion d'erreurs** robuste avec messages utilisateur
+### 📄 Pages Complètes
+- **Accueil** : Présentation, compétences et appel à l'action
+- **CV** : Curriculum vitae complet et téléchargeable en PDF
+- **Projets** : Showcase de projets avec technologies et démos
+- **Veille Technologique** : Articles sur les NPU (Neural Processing Units)
+- **Parcours** : Timeline professionnelle et éducative
+- **Actualités** : Flux RSS agrégé avec filtres par catégorie
+- **Ancien site** : Lien vers l'ancienne version dans le footer
 
 ### 🎯 Expérience Utilisateur
-- **Scroll progressif** avec indicateur de position
-- **Bouton retour en haut** apparaît automatiquement
-- **Chargement paresseux** (lazy loading) des images
-- **Smooth scroll** pour navigation fluide
-- **Notifications toast** pour feedback utilisateur
-- **Loader animé** pendant chargement initial
-- **Performance monitoring** intégré
+- **Navigation intuitive** avec menu responsive
+- **Bouton retour en haut** avec smooth scroll
+- **Animations au scroll** pour engagement visuel
+- **Loading states** pour meilleur feedback
+- **URLs sémantiques** et navigation claire
 
 ## 🛠️ Technologies Utilisées
 
+### Backend
+- **PHP 8+** - Langage backend moderne
+- **Architecture MVC** - Séparation claire des responsabilités
+- **POO** - Programmation Orientée Objet
+- **Routing personnalisé** - Gestion des URLs propres
+
 ### Frontend
 - **HTML5** - Sémantique et accessible
-- **CSS3** - Variables CSS, Grid, Flexbox, animations
-- **JavaScript ES6+** - Classes, async/await, modules
-- **Service Worker** - Cache API, Background Sync
+- **TailwindCSS** - Framework CSS utility-first
+- **JavaScript ES6+** - Vanilla JS pour interactions
+- **Google Fonts (Inter)** - Typographie moderne
 
-### Outils & Libraries
-- **Splitting.js** - Animations de texte sophistiquées
-- **Normalize.css** - Cohérence cross-browser
-- **Google Fonts** - Press Start 2P pour style rétro
-- **NewsAPI** - Actualités technologiques en temps réel
+### Sécurité
+- **CSP Headers** - Content Security Policy
+- **CSRF Protection** - Tokens anti-cross-site
+- **XSS Prevention** - Sanitisation HTML
+- **Input Validation** - Validation stricte des données
 
-### Performance & Optimisation
-- **Preload** des ressources critiques
-- **Lazy loading** des images et sections
-- **Code splitting** par fonctionnalité
-- **Compression** et minification
-- **Cache stratégique** via Service Worker
+### Outils
+- **Apache/Nginx** - Serveur web avec .htaccess
+- **Git** - Gestion de versions
+- **Composer** (optionnel) - Gestion des dépendances PHP
 
 ## 📁 Structure du Projet
 
 ```
 portfolio/
-├── index.html                 # Page d'accueil principale
-├── actuality.html            # Page actualités dynamiques
-├── manifest.json             # Configuration PWA
-├── sw.js                     # Service Worker
-├── README.md                 # Documentation
+├── public/                   # Point d'entrée public
+│   ├── index.php            # Front controller
+│   └── .htaccess            # Règles de réécriture
 │
-├── assets/
-│   ├── style.css            # Styles principaux
-│   ├── actuality.css        # Styles page actualités
-│   ├── modern-features.css  # Styles fonctionnalités modernes
-│   ├── security.js          # Module sécurité
-│   ├── actuality.js         # Logique actualités
-│   ├── modern-features.js   # Fonctionnalités UI/UX
-│   ├── fond.gif             # Background animé
-│   ├── vhs.mp3              # Musique d'ambiance
-│   └── *.pdf                # Documents et ressources
+├── app/                      # Logique applicative
+│   ├── Core.php             # Noyau MVC (routing, sécurité)
+│   ├── Controller.php       # Contrôleur de base
+│   │
+│   ├── controllers/         # Contrôleurs
+│   │   ├── HomeController.php
+│   │   ├── CvController.php
+│   │   ├── ProjectsController.php
+│   │   ├── VeilleController.php
+│   │   ├── JourneyController.php
+│   │   └── RssController.php
+│   │
+│   ├── models/              # Modèles (données)
+│   │
+│   └── views/               # Vues (templates)
+│       ├── layouts/         # Layouts réutilisables
+│       │   ├── header.php
+│       │   └── footer.php
+│       └── pages/           # Pages individuelles
+│           ├── home.php
+│           ├── cv.php
+│           ├── projects.php
+│           ├── veille.php
+│           ├── journey.php
+│           └── rss.php
 │
-├── MISSION1/ à MISSION9/     # Projets missions
-├── TP1/ à TP6/              # Travaux pratiques
-├── TP1JS/, TP1BD/, TP2BD/   # Exercices spécialisés
-└── TPFacture/               # Projet facturation
-
+├── config/                   # Configuration
+│   ├── app.php              # Configuration application
+│   └── security.php         # Configuration sécurité
+│
+├── assets/                   # Ressources (images, PDF, etc.)
+│   ├── cv.pdf
+│   └── *.png, *.jpg
+│
+├── old/                      # Ancien site (TP, Missions)
+│   ├── index.html
+│   ├── actuality.html
+│   ├── TP1/ à TP6/
+│   └── MISSION1/ à MISSION9/
+│
+├── .htaccess                 # Redirection vers public/
+└── README.md                 # Documentation
 ```
 
 ## 🚀 Installation & Utilisation
 
 ### Prérequis
-- Serveur web (Apache, Nginx, ou serveur de développement)
-- Navigateur moderne supportant ES6+
+- **PHP 7.4+** (recommandé PHP 8+)
+- **Apache** ou **Nginx** avec mod_rewrite
+- **Navigateur moderne** supportant ES6+
 - (Optionnel) Clé API NewsAPI pour les actualités
 
 ### Installation Rapide
@@ -111,31 +138,53 @@ git clone https://github.com/Sartome/portfolio.git
 cd portfolio
 ```
 
-2. **Configurer NewsAPI (optionnel)**
-   - Créer un compte gratuit sur [newsapi.org](https://newsapi.org)
-   - Copier votre clé API
-   - Ouvrir `assets/actuality.js`
-   - Remplacer `YOUR_API_KEY_HERE` par votre clé
+2. **Configurer le serveur web**
 
-3. **Lancer le serveur**
+**Apache** (déjà configuré via .htaccess)
 ```bash
-# Avec Python 3
-python -m http.server 8000
-
-# Avec PHP
-php -S localhost:8000
-
-# Avec Node.js (http-server)
-npx http-server
+# Activer mod_rewrite si nécessaire
+sudo a2enmod rewrite
+sudo systemctl restart apache2
 ```
 
-4. **Accéder au portfolio**
-   - Ouvrir `http://localhost:8000` dans votre navigateur
+**Nginx** - Ajouter à votre configuration :
+```nginx
+location / {
+    try_files $uri $uri/ /public/index.php?url=$uri&$args;
+}
+```
 
-### Installation PWA
-1. Ouvrir le portfolio dans Chrome/Edge
-2. Cliquer sur l'icône d'installation dans la barre d'adresse
-3. Le portfolio sera installé comme application native
+3. **Configurer l'application**
+   - Ouvrir `config/app.php`
+   - Modifier `app_url` selon votre environnement
+   - (Optionnel) Ajouter votre clé NewsAPI
+
+4. **Lancer le serveur de développement**
+```bash
+# Avec PHP Built-in Server
+cd public
+php -S localhost:8000
+
+# Ou utiliser XAMPP/WAMP/MAMP
+```
+
+5. **Accéder au portfolio**
+   - Ouvrir `http://localhost:8000` dans votre navigateur
+   - Naviguer entre les différentes sections
+   - Accéder à l'ancien site via le footer
+
+### Configuration Avancée
+
+**NewsAPI (Flux RSS)**
+1. Créer un compte sur [newsapi.org](https://newsapi.org)
+2. Copier votre clé API
+3. Ouvrir `config/app.php`
+4. Remplacer `YOUR_API_KEY_HERE` dans `newsapi_key`
+
+**Sécurité Production**
+1. Dans `public/index.php`, désactiver l'affichage des erreurs
+2. Dans `config/app.php`, mettre `debug` à `false`
+3. Activer HTTPS et décommenter la redirection dans `.htaccess`
 
 ## 🎨 Personnalisation
 
