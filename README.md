@@ -181,6 +181,12 @@ php -S localhost:8000
 3. Ouvrir `config/app.php`
 4. Remplacer `YOUR_API_KEY_HERE` dans `newsapi_key`
 
+**Flux RSS (Google Alerts - déjà configuré)**
+1. Le flux Google Alerts est déjà configuré dans `app/controllers/RssController.php`
+2. URL du flux: `https://www.google.fr/alerts/feeds/06235267178635802820/7750195999628698780`
+3. Le parser supporte automatiquement les flux Atom et RSS
+4. Pour changer de flux: modifier l'URL ligne 40 dans `RssController.php`
+
 **Sécurité Production**
 1. Dans `public/index.php`, désactiver l'affichage des erreurs
 2. Dans `config/app.php`, mettre `debug` à `false`
@@ -285,11 +291,17 @@ class NotificationManager { /* ... */ }
 4. Exporter dans `window.ModernFeatures`
 
 ### Debugging
-Activer le mode verbose :
+**Activer le mode verbose :**
 ```javascript
 // Dans la console navigateur
 localStorage.setItem('debug', 'true');
 ```
+
+**Débogage RSS :**
+- Le parser supporte maintenant les flux Atom (Google Alerts) et RSS standards
+- En cas d'erreur "Unexpected token '<'", vérifier que le flux retourne bien du XML
+- Tester le flux directement: `curl "URL_DU_FLUX"`
+- Les logs d'erreur sont disponibles dans les logs du serveur PHP
 
 ## 📱 Compatibilité
 

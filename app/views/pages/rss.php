@@ -29,6 +29,16 @@ require_once __DIR__ . '/../layouts/header.php';
                    class="form-radio bg-slate-700 border-slate-600 text-blue-500 focus:ring-blue-500 focus:ring-opacity-50">
             <span>Plus populaire</span>
         </label>
+        
+        <button id="favorites-toggle" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg transition-colors text-white font-semibold">
+            ⭐ Favoris
+        </button>
+        
+        <div class="relative">
+            <button id="favorites-notification" class="absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white rounded-full text-xs font-bold flex items-center justify-center" style="display: none;">
+                0
+            </button>
+        </div>
     </div>
 
     <div id="rss-feed-container" class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">

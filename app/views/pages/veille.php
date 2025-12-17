@@ -6,8 +6,8 @@
         <h1 class="text-5xl font-bold mb-4 gradient-text">Veille Technologique</h1>
         <p class="text-xl text-gray-400 mb-4">Neural Processing Units (NPU)</p>
         <p class="text-gray-500 max-w-3xl mx-auto">
-            Exploration approfondie des NPU, ces processeurs spécialisés qui révolutionnent l'intelligence artificielle 
-            en apportant des capacités de calcul IA directement dans nos appareils.
+            Exploration approfondie des NPU, ces processeurs spécialisés qui révolutionnent le traitement
+            en apportant des capacités de calcul avancées directement dans nos appareils.
         </p>
     </div>
 </section>
@@ -23,8 +23,8 @@
         </h2>
         <div class="space-y-4 text-gray-300">
             <p>
-                Les NPU (Neural Processing Units) représentent une révolution dans le monde de l'informatique et de l'IA. 
-                Ces processeurs spécialisés transforment notre façon d'utiliser l'intelligence artificielle au quotidien.
+                Les NPU (Neural Processing Units) représentent une révolution dans le monde de l'informatique et du traitement avancé. 
+                Ces processeurs spécialisés transforment notre façon d'utiliser les capacités de calcul au quotidien.
             </p>
             <p>
                 Cette veille technologique explore comment les NPU impactent le développement web, mobile et desktop, 
@@ -42,7 +42,7 @@
                 </div>
                 <div class="bg-green-600/10 border border-green-600/30 rounded-lg p-4">
                     <div class="text-3xl font-bold text-green-400 mb-2">100%</div>
-                    <div class="text-sm">IA locale sans cloud</div>
+                    <div class="text-sm">Traitement local sans cloud</div>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@
                 <ul class="space-y-2 text-gray-300">
                     <li class="flex items-start">
                         <span class="text-blue-400 mr-2">✓</span>
-                        Les NPU ouvrent de nouvelles possibilités d'applications IA locales
+                        Les NPU ouvrent de nouvelles possibilités d'applications locales
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-400 mr-2">✓</span>
@@ -230,9 +230,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a- 5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Recherche IA</h3>
+                    <h3 class="text-xl font-bold mb-2">Recherche NPU</h3>
                     <p class="text-gray-400 mb-4">Papiers de recherche et avancées scientifiques</p>
-                    <a href="https://arxiv.org/list/cs.AI/recent" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">Site officiel arXiv →</a>
+                    <a href="https://arxiv.org/list/cs.LG/recent" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">Site officiel arXiv →</a>
                 </div>
             </div>
             

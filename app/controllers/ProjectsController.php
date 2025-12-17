@@ -55,9 +55,9 @@ class ProjectsController extends Controller {
                 'year' => '2024'
             ],
             [
-                'title' => 'Infrastructure Windows Server',
-                'description' => 'Mise à niveau et maintenance du parc Windows Server de la Mairie d\'Orly. Configuration des services Active Directory et gestion des stratégies de groupe.',
-                'technologies' => ['Windows Server', 'Active Directory', 'PowerShell', 'Administration'],
+                'title' => 'Infrastructure Windows Server - GPO',
+                'description' => 'Compte-rendu de Projet : Optimisation et Sécurisation de l\'Infrastructure via GPO. Mise en place de stratégies de groupe pour uniformiser la gestion des postes de travail, sécuriser les accès et automatiser le déploiement des ressources dans un environnement Windows Server 2022.',
+                'technologies' => ['Windows Server 2022', 'Active Directory', 'GPO', 'PowerShell', 'Sécurité', 'RGPD'],
                 'image' => 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=250&fit=crop',
                 'github' => null,
                 'demo' => null,
@@ -70,7 +70,7 @@ class ProjectsController extends Controller {
                 'technologies' => ['PHP', 'JavaScript', 'MySQL', 'HTML5', 'CSS3', 'E-commerce'],
                 'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
                 'github' => 'https://github.com/Sartome/sellandbuy',
-                'demo' => null,
+                'demo' => 'http://localhost/sellandbuy/',
                 'featured' => true,
                 'year' => '2024'
             ],
@@ -80,7 +80,7 @@ class ProjectsController extends Controller {
                 'technologies' => ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Administration'],
                 'image' => 'https://i.ytimg.com/vi/QB7JwYCHyD4/maxresdefault.jpg',
                 'github' => 'https://github.com/Sartome/digital-zoo',
-                'demo' => null,
+                'demo' => 'http://localhost/digital-zoo/login.php',
                 'featured' => true,
                 'year' => '2024'
             ],
@@ -101,7 +101,7 @@ class ProjectsController extends Controller {
                 'image' => 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=250&fit=crop',
                 'github' => null,
                 'demo' => null,
-                'featured' => true,
+                'featured' => false,
                 'year' => '2023'
             ]
         ];

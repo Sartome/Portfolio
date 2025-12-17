@@ -32,7 +32,7 @@
                 Développeur Web Full-Stack passionné et motivé, actuellement en formation BTS SIO option SLAM. 
                 Spécialisé dans le développement d'applications web modernes avec une forte attention portée à 
                 la sécurité, aux performances et à l'expérience utilisateur. Autodidacte curieux, je reste en 
-                veille constante sur les nouvelles technologies, notamment l'IA et les NPU.
+                veille constante sur les nouvelles technologies, notamment les NPU et le traitement avancé.
             </p>
         </div>
         

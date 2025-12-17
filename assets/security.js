@@ -75,8 +75,8 @@ function sanitizeNewsArticle(article) {
     // Le contrôleur PHP a déjà nettoyé les données, 
     // mais nous re-validons côté client par principe de "défense en profondeur".
     return {
-        title: article.title || 'Titre indisponible',
-        description: article.description || 'Description indisponible',
+        title: article.title || 'Titre indisponible', // Garder le HTML pour le rendu
+        description: article.description || 'Description indisponible', // Garder le HTML pour le rendu
         image: sanitizeImageURL(article.image), // Re-valide l'URL de l'image
         publishedAt: article.publishedAt || new Date().toISOString(),
         url: sanitizeURL(article.url), // Re-valide l'URL du lien

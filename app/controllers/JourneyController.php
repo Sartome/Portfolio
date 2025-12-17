@@ -35,33 +35,32 @@ class JourneyController extends Controller {
                 'badge' => 'Formation en cours'
             ],
             [
-                'year' => '2024-2026',
+                'year' => '2025-2026',
                 'type' => 'education',
                 'title' => 'BTS SIO - SLAM (2ème année)',
-                'organization' => 'Lycée Vilgénis, Massy',
+                'organization' => 'Ingetis, Paris',
                 'description' => 'Formation en développement d\'applications, spécialisation Solutions Logicielles et Applications Métiers. Alternance à la Mairie d\'Orly.',
                 'skills' => ['PHP', 'JavaScript', 'MySQL', 'MVC', 'POO', 'Git'],
                 'icon' => 'education',
                 'badge' => 'Formation en cours'
             ],
             [
-                'year' => '2024',
-                'type' => 'project',
-                'title' => 'SoundFly - Application YouTube',
-                'organization' => 'Projet Personnel',
-                'description' => 'Développement d\'une application web de recherche et téléchargement YouTube avec API intégrée. Interface moderne et fonctionnalités avancées.',
-                'skills' => ['API YouTube', 'JavaScript', 'Frontend', 'Integration API'],
-                'icon' => 'code',
-                'link' => 'https://github.com/matskobinks/soundfly'
-            ],
-            [
                 'year' => '2025',
                 'type' => 'project',
-                'title' => 'Refonte Portfolio MVC',
+                'title' => 'Update SOUNDFLY',
                 'organization' => 'Projet Personnel',
-                'description' => 'Développement d\'un portfolio moderne avec architecture MVC, sécurité renforcée et design responsive.',
-                'skills' => ['PHP MVC', 'Security', 'TailwindCSS', 'UX/UI'],
+                'description' => 'Mise à jour de SoundFly, une application web de recherche et téléchargement YouTube avec API intégrée. Interface moderne et fonctionnalités avancées.',
+                'skills' => ['API YouTube', 'JavaScript', 'Frontend', 'Integration API'],
                 'icon' => 'code'
+            ],
+            [
+                'year' => '2023-2024',
+                'type' => 'education',
+                'title' => 'BTS SIO - SLAM (1ère année)',
+                'organization' => 'Ingetis, Paris',
+                'description' => 'Formation en développement d\'applications, spécialisation Solutions Logicielles et Applications Métiers. Configuration Windows Server pour la première année.',
+                'skills' => ['HTML5', 'CSS3', 'JavaScript ES6+', 'Responsive Design', 'Windows Server'],
+                'icon' => 'education'
             ],
             [
                 'year' => '2023',
@@ -73,13 +72,14 @@ class JourneyController extends Controller {
                 'icon' => 'code'
             ],
             [
-                'year' => '2023-2024',
-                'type' => 'education',
-                'title' => 'BTS SIO - SLAM (1ère année)',
-                'organization' => 'Lycée Vilgénis, Massy',
-                'description' => 'Formation en développement d\'applications, spécialisation Solutions Logicielles et Applications Métiers. Configuration Windows Server pour la première année.',
-                'skills' => ['HTML5', 'CSS3', 'JavaScript ES6+', 'Responsive Design', 'Windows Server'],
-                'icon' => 'education'
+                'year' => '2023',
+                'type' => 'project',
+                'title' => 'SoundFly - Application YouTube',
+                'organization' => 'Projet Personnel',
+                'description' => 'Développement d\'une application web de recherche et téléchargement YouTube avec API intégrée. Interface moderne et fonctionnalités avancées.',
+                'skills' => ['API YouTube', 'JavaScript', 'Frontend', 'Integration API'],
+                'icon' => 'code',
+                'link' => 'https://github.com/matskobinks/soundfly'
             ],
             [
                 'year' => '2023',

@@ -13,7 +13,7 @@ class RssController extends Controller {
      */
     public function index() {
         $data = [
-            'title' => 'Actualités Tech - Flux RSS',
+            'title' => 'Actualités NPU- Flux RSS',
             'description' => 'Dernières actualités technologiques agrégées',
             'page' => 'rss' // Pour la navigation active
         ];
@@ -21,9 +21,7 @@ class RssController extends Controller {
         $this->view('rss', $data);
     }
 
-    /**
-     * Point d'entrée API pour récupérer les actualités (appelé en AJAX)
-     */
+
     public function fetch() {
         // La vérification AJAX doit être la première chose à faire
         if (!$this->isAjax()) {
@@ -38,26 +36,13 @@ class RssController extends Controller {
         try {
             $apiKey = Core::config('newsapi_key');
             $news = [];
-
-            // NOTE : J'active le flux RSS par défaut car il ne nécessite pas de clé API.
-            // Si vous voulez utiliser NewsAPI, commentez la ligne fetchFromRSS
-            // et décommentez le bloc "if/else" ci-dessous.
-
-            // Option 1 : Flux RSS (Frandroid)
-            $news = $this->fetchFromRSS("https://www.frandroid.com/feed");
-            $news = $this->filterAIArticles($news);
+            // Option 1 : Flux RSS (Google Alerts)
+            $news = $this->fetchFromRSS("https://www.google.fr/alerts/feeds/06235267178635802820/7750195999628698780");
+            $news = $this->filterTechArticles($news);
 
             if (empty($news)) {
                 $news = $this->getMockNews($category);
             }
-
-            // Option 2 : NewsAPI (si vous avez une clé)
-            // if ($apiKey && $apiKey !== '23ee33423d094283b0fcdc22b67b5e3c') {
-            //     $news = $this->fetchFromNewsAPI($category, $apiKey);
-            // } else {
-            //     // Fallback sur les données factices
-            //     $news = $this->getMockNews($category);
-            // }
             
             $sortedNews = $this->applySorting($news, $sort);
             
@@ -189,55 +174,158 @@ class RssController extends Controller {
         // S'assurer que le namespace 'media' est géré
         $namespaces = $rss->getNamespaces(true);
 
-        foreach ($rss->channel->item as $item) {
-            $imageUrl = 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News'; // Image par défaut
-
-            // 1) Essayer media:thumbnail puis media:content (Frandroid utilise souvent ce namespace)
-            if (isset($namespaces['media'])) {
-                $media = $item->children($namespaces['media']);
-
-                if (isset($media->thumbnail) && isset($media->thumbnail->attributes()->url)) {
-                    $imageUrl = (string) $media->thumbnail->attributes()->url;
-                } elseif (isset($media->content) && isset($media->content->attributes()->url)) {
-                    $imageUrl = (string) $media->content->attributes()->url;
+        // Vérifier si c'est un flux Atom (Google Alerts) ou RSS
+        if (isset($rss->entry)) {
+            // Flux Atom (Google Alerts)
+            foreach ($rss->entry as $item) {
+                $imageUrl = 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News'; // Image par défaut
+                
+                // 1) Essayer d'extraire l'image depuis le contenu HTML
+                $content = (string) $item->content;
+                if (preg_match('/<img[^>]+src=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $matches)) {
+                    $imageUrl = $matches[1];
+                } else {
+                    // 2) Si pas d'image dans le contenu, essayer de récupérer l'image depuis l'article
+                    $articleUrl = (string) ($item->link['href'] ?? $item->link);
+                    $imageUrl = $this->fetchImageFromArticle($articleUrl);
                 }
-            }
 
-            // 2) Fallback sur <enclosure> si c'est une image
-            if (($imageUrl === '' || str_contains($imageUrl, 'placeholder.com'))
-                && isset($item->enclosure) && isset($item->enclosure->attributes()->url)) {
-                $type = (string) $item->enclosure->attributes()->type;
-                if (stripos($type, 'image') !== false) {
-                    $imageUrl = (string) $item->enclosure->attributes()->url;
+                $articles[] = [
+                    'title' => (string) $item->title,
+                    'description' => (string) strip_tags($item->summary ?? $item->content),
+                    'url' => (string) ($item->link['href'] ?? $item->link),
+                    'image' => $imageUrl,
+                    'publishedAt' => date('Y-m-d\TH:i:s\Z', strtotime((string)$item->published)),
+                    'source' => (string) $rss->title,
+                    'popularity' => 0,
+                    'categories' => []
+                ];
+            }
+        } else {
+            // Flux RSS standard
+            foreach ($rss->channel->item as $item) {
+                $imageUrl = 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News'; // Image par défaut
+
+                // 1) Essayer media:thumbnail puis media:content
+                if (isset($namespaces['media'])) {
+                    $media = $item->children($namespaces['media']);
+
+                    if (isset($media->thumbnail) && isset($media->thumbnail->attributes()->url)) {
+                        $imageUrl = (string) $media->thumbnail->attributes()->url;
+                    } elseif (isset($media->content) && isset($media->content->attributes()->url)) {
+                        $imageUrl = (string) $media->content->attributes()->url;
+                    }
                 }
-            }
 
-            // 3) Nettoyage basique : s'assurer que c'est une URL http(s)
-            if (!preg_match('~^https?://~i', $imageUrl)) {
-                $imageUrl = 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News';
-            }
-
-            // Récupérer les catégories de l'article (pour filtrage IA)
-            $categories = [];
-            if (isset($item->category)) {
-                foreach ($item->category as $cat) {
-                    $categories[] = (string) $cat;
+                // 2) Fallback sur <enclosure> si c'est une image
+                if (($imageUrl === '' || str_contains($imageUrl, 'placeholder.com'))
+                    && isset($item->enclosure) && isset($item->enclosure->attributes()->url)) {
+                    $type = (string) $item->enclosure->attributes()->type;
+                    if (stripos($type, 'image') !== false) {
+                        $imageUrl = (string) $item->enclosure->attributes()->url;
+                    }
                 }
-            }
 
-            $articles[] = [
-                'title' => (string) $item->title,
-                'description' => (string) strip_tags($item->description),
-                'url' => (string) $item->link,
-                'image' => $imageUrl,
-                'publishedAt' => date('Y-m-d\TH:i:s\Z', strtotime((string)$item->pubDate)),
-                'source' => (string) $rss->channel->title,
-                'popularity' => 0, // Ajout pour la cohérence du tri
-                'categories' => $categories
-            ];
+                // 3) Nettoyage basique : s'assurer que c'est une URL http(s)
+                if (!preg_match('~^https?://~i', $imageUrl)) {
+                    $imageUrl = 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News';
+                }
+
+                // Récupérer les catégories de l'article (pour filtrage)
+                $categories = [];
+                if (isset($item->category)) {
+                    foreach ($item->category as $cat) {
+                        $categories[] = (string) $cat;
+                    }
+                }
+
+                $articles[] = [
+                    'title' => (string) $item->title,
+                    'description' => (string) strip_tags($item->description),
+                    'url' => (string) $item->link,
+                    'image' => $imageUrl,
+                    'publishedAt' => date('Y-m-d\TH:i:s\Z', strtotime((string)$item->pubDate)),
+                    'source' => (string) $rss->channel->title,
+                    'popularity' => 0, // Ajout pour la cohérence du tri
+                    'categories' => $categories
+                ];
+            }
         }
 
         return $articles;
+    }
+    
+    /**
+     * Extrait l'image principale depuis une page d'article
+     */
+    private function fetchImageFromArticle($url) {
+        if (empty($url)) {
+            error_log("fetchImageFromArticle: Empty URL provided");
+            return 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News';
+        }
+        
+        error_log("fetchImageFromArticle: Attempting to fetch image from URL: " . $url);
+        
+        try {
+            // Utiliser cURL pour récupérer le contenu de l'article
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Portfolio-RSS-Reader/1.0');
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            
+            $html = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $finalUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+            curl_close($ch);
+            
+            error_log("fetchImageFromArticle: HTTP Code: " . $httpCode . ", Final URL: " . $finalUrl);
+            
+            if ($httpCode !== 200 || empty($html)) {
+                error_log("fetchImageFromArticle: Failed to fetch content, using placeholder");
+                return 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News';
+            }
+            
+            // Créer un objet DOM pour parser le HTML
+            $dom = new DOMDocument();
+            @$dom->loadHTML($html);
+            $xpath = new DOMXPath($dom);
+            
+            // Priorités pour trouver l'image principale
+            $imageSelectors = [
+                '//meta[@property="og:image"]/@content',          // Open Graph
+                '//meta[@name="twitter:image"]/@content',        // Twitter Card
+                '//meta[@property="og:image:secure_url"]/@content', // Open Graph HTTPS
+                '//img[@class[contains(., "featured")]]/@src',   // Images featured
+                '//img[@class[contains(., "hero")]]/@src',        // Images hero
+                '//img[@class[contains(., "main")]]/@src',        // Images main
+                '//img[@class[contains(., "article")]]/@src',     // Images article
+                '//img[1]/@src',                                // Première image
+            ];
+            
+            foreach ($imageSelectors as $index => $selector) {
+                $nodes = $xpath->query($selector);
+                error_log("fetchImageFromArticle: Testing selector " . ($index + 1) . ": " . $selector . ", found " . $nodes->length . " nodes");
+                
+                if ($nodes->length > 0) {
+                    $imageUrl = trim($nodes->item(0)->nodeValue);
+                    error_log("fetchImageFromArticle: Found image URL: " . $imageUrl);
+                    
+                    if (!empty($imageUrl) && filter_var($imageUrl, FILTER_VALIDATE_URL)) {
+                        error_log("fetchImageFromArticle: Using image: " . $imageUrl);
+                        return $imageUrl;
+                    }
+                }
+            }
+            
+        } catch (Exception $e) {
+            error_log("Failed to fetch image from article: " . $e->getMessage());
+        }
+        
+        error_log("fetchImageFromArticle: No image found, using placeholder");
+        return 'https://via.placeholder.com/400x250/1e40af/ffffff?text=News';
     }
     
     /**
@@ -277,16 +365,17 @@ class RssController extends Controller {
     }
 
     /**
-     * Filtre les articles pour ne garder que ceux liés à l'IA / NPU
+     * Filtre les articles pour ne garder que les articles pertinents
      */
-    private function filterAIArticles(array $articles): array {
+    private function filterTechArticles(array $articles): array {
         $keywords = [
-            'ia', 'intelligence artificielle', 'ia générative',
-            'ai ', 'ai,', 'ai:',
-            'npu', 'neural processing unit', 'neural engine', 'processeur neuronal',
-            'copilot', 'copilot+', 'chatgpt', 'llm', 'gpt',
-            'machine learning', 'deep learning',
-            'gpu rtx', 'tensor core', 'accélérateur d\'ia'
+            'intelligence artificielle', 'ia', 'ai', 'machine learning', 'deep learning',
+            'neural network', 'réseau neuronal', 'npu', 'gpu', 'tensor core',
+            'accélérateur', 'algorithmique', 'automatisation', 'robotique',
+            'informatique quantique', 'big data', 'data science', 'cybersécurité',
+            'cloud computing', 'edge computing', 'iot', 'blockchain',
+            'réalité virtuelle', 'réalité augmentée', 'métavers',
+            'voiture autonome', 'drone', 'smartphone', 'ordinateur quantique'
         ];
 
         $filtered = array_filter($articles, function ($article) use ($keywords) {

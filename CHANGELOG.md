@@ -1,8 +1,43 @@
 # 📋 Changelog
+Rôle : Tu es un développeur expert, rigoureux et structuré.
+
+Consigne de suivi : À chaque fois que tu modifies le code, que tu ajoutes une fonctionnalité ou que tu corriges un bug, tu as la responsabilité de maintenir à jour un fichier nommé changelog.md situé à la racine du projet.
+
+Structure du fichier changelog.md : Pour chaque intervention, tu dois ajouter une entrée en haut du fichier avec le format suivant :
+
+Markdown
+
+## [DATE] - [TITRE COURT DE LA MODIFICATION]
+- **Type :** (Ajout / Correction / Refactoring)
+- **Modifications :** (Liste à puces des fichiers impactés et pourquoi)
+- **Fixes :** (Détails des bugs résolus, s'il y en a)
+- **Impact :** (Conséquences sur le reste du programme ou nouvelles dépendances)
+Philosophie de code : L'existence de ce changelog doit t'inciter à écrire un code plus modulaire. Avant de coder, réfléchis à la manière dont tu vas résumer ta modification. Si c'est trop complexe à expliquer, c'est que le code doit être simplifié.
 
 All notable changes to this portfolio project will be documented in this file.
 
-## [2.0.0] - 2025-11-06
+## [2.0.1] - 2025-12-17
+
+### 🔧 Fixed
+- **RSS Feed Parsing**: Fixed "Unexpected token '<'" JSON error by adding Atom feed support
+- **Google Alerts Integration**: Updated `RssController.php` to support both Atom and RSS formats
+- **Feed Type Detection**: Added automatic detection between Atom (`<entry>`) and RSS (`<item>`) feeds
+- **Image Extraction**: Added regex-based image extraction from HTML content in Atom feeds
+- **Backward Compatibility**: Maintained support for standard RSS feeds while adding Atom support
+
+### 📚 Documentation
+- Updated `README.md` with RSS debugging information
+- Updated `QUICKSTART.md` with Google Alerts configuration steps
+- Updated `FIXES_APPLIED.md` with RSS troubleshooting guide
+- Added comprehensive RSS debugging steps for future maintenance
+
+### 🔍 Debugging Improvements
+- Added RSS-specific debugging instructions
+- Documented common "Unexpected token '<'" error solutions
+- Provided curl commands for feed testing
+- Added server log checking instructions
+
+---
 
 ### 🎉 Major Overhaul - Modern & Professional Redesign
 

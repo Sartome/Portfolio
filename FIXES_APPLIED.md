@@ -32,6 +32,16 @@
 
 **Solution**: Updated asset function to work correctly with .htaccess routing.
 
+### 5. RSS Feed Parsing Issues
+**Problem**: Google Alerts returns Atom feed format, but parser expected RSS format, causing "Unexpected token '<'" JSON errors.
+
+**Solution**: 
+- Updated `app/controllers/RssController.php` to support both Atom and RSS formats
+- Added automatic detection of feed type (`isset($rss->entry)`)
+- Implemented proper field mapping for Atom entries (title, summary, content, published)
+- Added image extraction from HTML content using regex
+- Maintained backward compatibility with standard RSS feeds
+
 ## Testing
 
 1. **Run the diagnostic script**: Visit `http://localhost/portfolio/test.php` to check if everything is working.
@@ -39,6 +49,8 @@
 2. **Test the main application**: Visit `http://localhost/portfolio/public/` to access the portfolio.
 
 3. **Test error handling**: Try visiting a non-existent page like `http://localhost/portfolio/public/nonexistent` to see the 404 error page.
+
+4. **Test RSS feed**: Visit `http://localhost/portfolio/public/rss` to verify the Google Alerts feed loads correctly with Atom/RSS parsing.
 
 ## Configuration Notes
 
@@ -68,11 +80,21 @@ If your portfolio is at `http://localhost/myportfolio/`, you may need to adjust 
 2. Verify file permissions
 3. Run the diagnostic script to identify issues
 
-### Issue: Routing not working
+### Issue: RSS feed not loading properly
 **Solution**:
-1. Ensure mod_rewrite is enabled in Apache
-2. Check .htaccess files are being read
-3. Verify file permissions on .htaccess files
+1. Check if the feed returns valid XML: `curl "FEED_URL"`
+2. Verify feed type (Atom vs RSS) - parser now supports both
+3. Check PHP error logs for parsing errors
+4. Test with a known working RSS feed first
+5. Ensure the feed URL is accessible from your server
+
+### Issue: "Unexpected token '<'" JSON error
+**Solution**:
+1. This indicates the RSS parser is returning HTML instead of JSON
+2. Check that the feed URL returns XML, not HTML
+3. Verify the feed format is supported (Atom/RSS)
+4. Check for network connectivity issues
+5. Review server error logs for PHP parsing errors
 
 ## Files Modified/Created
 
@@ -84,6 +106,7 @@ If your portfolio is at `http://localhost/myportfolio/`, you may need to adjust 
 
 ### Modified:
 - `app/controllers/JourneyController.php` (fixed require path)
+- `app/controllers/RssController.php` (added Atom/RSS dual support)
 - `public/.htaccess` (improved routing)
 - `.htaccess` (fixed root redirects)
 - `app/views/layouts/header.php` (fixed asset function)
