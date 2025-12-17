@@ -210,7 +210,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-2">Documentation Technique</h3>
                     <p class="text-gray-400 mb-4">Spécifications et architectures des NPU modernes</p>
-                    <a href="https://developer.nvidia.com/" target="_blank" class="text-blue-400 hover:text-blue-300">Voir plus →</a>
+                    <a href="https://developer.nvidia.com/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">Site officiel NVIDIA →</a>
                 </div>
                 
                 <div class="text-center">
@@ -221,7 +221,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-2">Actualités NPU</h3>
                     <p class="text-gray-400 mb-4">Dernières innovations et annonces du secteur</p>
-                    <a href="https://www.anandtech.com/" target="_blank" class="text-purple-400 hover:text-purple-300">Voir plus →</a>
+                    <a href="https://www.anandtech.com/" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Site officiel AnandTech →</a>
                 </div>
                 
                 <div class="text-center">
@@ -232,7 +232,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-2">Recherche IA</h3>
                     <p class="text-gray-400 mb-4">Papiers de recherche et avancées scientifiques</p>
-                    <a href="https://arxiv.org/list/cs.AI/recent" target="_blank" class="text-green-400 hover:text-green-300">Voir plus →</a>
+                    <a href="https://arxiv.org/list/cs.AI/recent" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">Site officiel arXiv →</a>
                 </div>
             </div>
             

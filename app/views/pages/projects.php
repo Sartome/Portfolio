@@ -1,4 +1,4 @@
-<?php require_once '../app/views/layouts/header.php'; ?>
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
 <!-- Projects Header -->
 <section class="container mx-auto px-4 py-12">

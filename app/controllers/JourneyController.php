@@ -4,7 +4,7 @@
  * Professional and educational journey
  */
 
-require_once '../app/Controller.php';
+require_once __DIR__ . '/../Controller.php';
 
 class JourneyController extends Controller {
     
@@ -25,22 +25,24 @@ class JourneyController extends Controller {
     private function getTimeline() {
         return [
             [
-                'year' => '2024-2025',
+                'year' => '2025-2026',
                 'type' => 'experience',
                 'title' => 'Alternance - Administrateur Système',
                 'organization' => 'Mairie d\'Orly',
-                'description' => 'Gestion et maintenance du parc informatique municipal. Configuration Windows Server, administration GLPI pour la gestion des incidents, mise à niveau des infrastructures et support technique aux agents.',
-                'skills' => ['GLPI', 'Windows Server', 'Administration', 'Support Technique', 'Maintenance'],
-                'icon' => 'work'
+                'description' => 'Gestion et maintenance du parc informatique municipal. Administration GLPI pour la gestion des incidents, préparation d\'ordinateur (mise à jour, logiciels et mise à niveau Windows 11 et maintenance), mise à niveau des infrastructures et support technique aux agents.',
+                'skills' => ['GLPI', 'Administration', 'Support Technique', 'Maintenance', 'Windows 11'],
+                'icon' => 'work',
+                'badge' => 'Formation en cours'
             ],
             [
-                'year' => '2024-2025',
+                'year' => '2024-2026',
                 'type' => 'education',
                 'title' => 'BTS SIO - SLAM (2ème année)',
                 'organization' => 'Lycée Vilgénis, Massy',
                 'description' => 'Formation en développement d\'applications, spécialisation Solutions Logicielles et Applications Métiers. Alternance à la Mairie d\'Orly.',
                 'skills' => ['PHP', 'JavaScript', 'MySQL', 'MVC', 'POO', 'Git'],
-                'icon' => 'education'
+                'icon' => 'education',
+                'badge' => 'Formation en cours'
             ],
             [
                 'year' => '2024',
@@ -75,8 +77,8 @@ class JourneyController extends Controller {
                 'type' => 'education',
                 'title' => 'BTS SIO - SLAM (1ère année)',
                 'organization' => 'Lycée Vilgénis, Massy',
-                'description' => 'Formation en développement d\'applications, spécialisation Solutions Logicielles et Applications Métiers.',
-                'skills' => ['HTML5', 'CSS3', 'JavaScript ES6+', 'Responsive Design'],
+                'description' => 'Formation en développement d\'applications, spécialisation Solutions Logicielles et Applications Métiers. Configuration Windows Server pour la première année.',
+                'skills' => ['HTML5', 'CSS3', 'JavaScript ES6+', 'Responsive Design', 'Windows Server'],
                 'icon' => 'education'
             ],
             [

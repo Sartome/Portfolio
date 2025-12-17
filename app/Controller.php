@@ -10,10 +10,10 @@ class Controller {
      * Load and render a view
      */
     protected function view($view, $data = []) {
-        // Extract data array to variables
+        // Extraire le tableau de données en variables
         extract($data);
         
-        // Include the view file
+        // Inclure le fichier de vue
         $viewFile = __DIR__ . '/views/pages/' . $view . '.php';
         
         if (file_exists($viewFile)) {

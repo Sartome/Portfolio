@@ -5,17 +5,17 @@
  */
 
 return [
-    // Content Security Policy
+    // Content Security Policy - Configuration assouplie pour le développement
     'csp' => [
-        'default-src' => ["'self'"],
-        'script-src' => ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://unpkg.com"],
-        'style-src' => ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.tailwindcss.com"],
-        'img-src' => ["'self'", "data:", "https:", "blob:"],
-        'font-src' => ["'self'", "https://fonts.gstatic.com"],
-        'connect-src' => ["'self'", "https://newsapi.org"],
-        'frame-ancestors' => ["'none'"],
+        'default-src' => ["'self'", "'unsafe-inline'", "'unsafe-eval'", "*"],
+        'script-src' => ["'self'", "'unsafe-inline'", "'unsafe-eval'", "*"],
+        'style-src' => ["'self'", "'unsafe-inline'", "*"],
+        'img-src' => ["'self'", "data:", "https:", "http:", "blob:", "*"],
+        'font-src' => ["'self'", "*"],
+        'connect-src' => ["'self'", "*"],
+        'frame-ancestors' => ["'self'", "*"],
         'base-uri' => ["'self'"],
-        'form-action' => ["'self'"],
+        'form-action' => ["'self'", "*"],
     ],
     
     // Security Headers

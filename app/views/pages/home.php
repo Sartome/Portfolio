@@ -119,7 +119,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                         </svg>
                     </div>
-                    <span class="text-sm text-gray-400">2022 - 2024</span>
+                    <span class="text-sm text-gray-400">2022 - 2026</span>
                 </div>
                 <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-400 transition-colors">
                     Mon Parcours
@@ -143,9 +143,21 @@
             Vous avez un projet ? Une opportunité ? N'hésitez pas à me contacter.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="mailto:elarrassmarwane@gmail.com" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all hover-glow">
-                Me contacter
-            </a>
+            <div class="relative">
+                <button onclick="toggleEmailTooltip('home-email-tooltip')" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all hover-glow">
+                    Me contacter
+                </button>
+                <!-- Bulle d'information email interactive -->
+                <div id="home-email-tooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-sm rounded-lg opacity-0 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-50">
+                    <div class="flex items-center gap-2">
+                        <span id="home-email-text">elarrassmarwane@gmail.com</span>
+                        <button onclick="copyEmail('home-email-text')" class="px-2 py-1 bg-blue-600 hover:bg-blue-700 rounded text-xs transition-colors">
+                            Copier
+                        </button>
+                    </div>
+                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                </div>
+            </div>
             <a href="https://www.linkedin.com/in/marwane-el-arrass/" target="_blank" class="px-8 py-3 glass hover:bg-white/10 rounded-lg font-semibold transition-all">
                 LinkedIn
             </a>

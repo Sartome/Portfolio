@@ -25,16 +25,6 @@ class ProjectsController extends Controller {
     private function getProjects() {
         return [
             [
-                'title' => 'SoundFly - Application YouTube',
-                'description' => 'Application web moderne pour la recherche et le téléchargement de vidéos YouTube. Interface intuitive avec API intégrée, recherche avancée et gestion des téléchargements.',
-                'technologies' => ['JavaScript', 'API YouTube', 'Frontend', 'HTML5', 'CSS3'],
-                'image' => 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop',
-                'github' => 'https://github.com/matskobinks/soundfly',
-                'demo' => null,
-                'featured' => true,
-                'year' => '2024'
-            ],
-            [
                 'title' => 'Portfolio MVC Moderne',
                 'description' => 'Portfolio professionnel avec architecture MVC complète, sécurité renforcée (CSP, CSRF), design responsive et animations modernes.',
                 'technologies' => ['PHP', 'MVC', 'TailwindCSS', 'Security', 'MySQL'],
@@ -45,14 +35,14 @@ class ProjectsController extends Controller {
                 'year' => '2025'
             ],
             [
-                'title' => 'Projet Unreal Engine 5',
-                'description' => 'Création d\'un projet interactif avec Unreal Engine 5. Exploration des graphismes temps réel, développement de gameplay et utilisation des Blueprints.',
-                'technologies' => ['Unreal Engine 5', 'Blueprints', '3D', 'C++', 'Game Development'],
-                'image' => 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=250&fit=crop',
-                'github' => null,
+                'title' => 'SoundFly - Application YouTube',
+                'description' => 'Application web moderne pour la recherche et le téléchargement de vidéos YouTube. Interface intuitive avec API intégrée, recherche avancée et gestion des téléchargements.',
+                'technologies' => ['JavaScript', 'API YouTube', 'Frontend', 'HTML5', 'CSS3'],
+                'image' => 'https://storage.googleapis.com/pr-newsroom-wp/1/2025/09/Spotify_Generic-Headers_092325_MC_03_V3-1.jpg',
+                'github' => 'https://github.com/matskobinks/soundfly',
                 'demo' => null,
                 'featured' => true,
-                'year' => '2023'
+                'year' => '2024'
             ],
             [
                 'title' => 'Gestionnaire GLPI - Mairie d\'Orly',
@@ -75,6 +65,26 @@ class ProjectsController extends Controller {
                 'year' => '2024'
             ],
             [
+                'title' => 'Marketplace - Sell and Buy',
+                'description' => 'Place de marché complète pour l\'achat et la vente de produits. Interface moderne avec gestion des annonces, panier d\'achat et système de paiement intégré.',
+                'technologies' => ['PHP', 'JavaScript', 'MySQL', 'HTML5', 'CSS3', 'E-commerce'],
+                'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
+                'github' => 'https://github.com/Sartome/sellandbuy',
+                'demo' => null,
+                'featured' => true,
+                'year' => '2024'
+            ],
+            [
+                'title' => 'Digital Zoo - Gestion Zoo',
+                'description' => 'Site de gestion complet pour un zoo fictif. Suivi des animaux, planning des soigneurs, gestion des enclos et interface d\'administration.',
+                'technologies' => ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Administration'],
+                'image' => 'https://i.ytimg.com/vi/QB7JwYCHyD4/maxresdefault.jpg',
+                'github' => 'https://github.com/Sartome/digital-zoo',
+                'demo' => null,
+                'featured' => true,
+                'year' => '2024'
+            ],
+            [
                 'title' => 'API de Gestion des Incidents',
                 'description' => 'Développement d\'une API REST pour la gestion des incidents techniques avec authentification JWT et documentation Swagger.',
                 'technologies' => ['PHP', 'API REST', 'JWT', 'MySQL', 'Swagger'],
@@ -82,6 +92,16 @@ class ProjectsController extends Controller {
                 'github' => null,
                 'demo' => null,
                 'featured' => false,
+                'year' => '2023'
+            ],
+            [
+                'title' => 'Projet Unreal Engine 5',
+                'description' => 'Création d\'un projet interactif avec Unreal Engine 5. Exploration des graphismes temps réel, développement de gameplay et utilisation des Blueprints.',
+                'technologies' => ['Unreal Engine 5', 'Blueprints', '3D', 'C++', 'Game Development'],
+                'image' => 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=250&fit=crop',
+                'github' => null,
+                'demo' => null,
+                'featured' => true,
                 'year' => '2023'
             ]
         ];

@@ -15,7 +15,7 @@ return [
     'csrf_token_name' => '_token',
     
     // API Keys (use environment variables in production)
-    'newsapi_key' => 'YOUR_API_KEY_HERE',
+    'newsapi_key' => '23ee33423d094283b0fcdc22b67b5e3c',
     
     // Site Owner Info
     'owner' => [
@@ -29,6 +29,6 @@ return [
     // Paths
     'paths' => [
         'assets' => '/assets',
-        'old_site' => '/old',
+        'old_site' => '/old/index.html',
     ],
 ];

@@ -1,6 +1,29 @@
 # Redirect all requests to the public directory
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    
+    # Handle requests for static files in assets directory
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^assets/(.*)$ assets/$1 [L]
+    
+    # Handle requests for old site
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^old/(.*)$ old/$1 [L]
+    
+    # Handle service worker and manifest at root level
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^sw\.js$ sw.js [L]
+    
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^manifest\.php$ manifest.php [L]
+    
+    # Don't redirect if file exists at root or already in public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Redirect to public directory for all other requests
     RewriteRule ^$ public/ [L]
-    RewriteRule (.*) public/$1 [L]
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>

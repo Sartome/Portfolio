@@ -53,7 +53,14 @@
                     <div class="glass p-6 rounded-xl hover-glow transition-all">
                         <div class="flex items-start justify-between mb-3">
                             <div>
-                                <h3 class="text-2xl font-bold mb-1"><?= htmlspecialchars($item['title']) ?></h3>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h3 class="text-2xl font-bold"><?= htmlspecialchars($item['title']) ?></h3>
+                                    <?php if (isset($item['badge'])): ?>
+                                        <span class="px-3 py-1 bg-green-600/20 border border-green-600/50 rounded-full text-xs text-green-400 font-semibold">
+                                            <?= htmlspecialchars($item['badge']) ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
                                 <p class="text-gray-400"><?= htmlspecialchars($item['organization']) ?></p>
                             </div>
                             <span class="px-3 py-1 bg-blue-600/20 border border-blue-600/50 rounded-full text-sm whitespace-nowrap">
@@ -231,4 +238,4 @@
     </div>
 </section>
 
-<?php require_once '../app/views/layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -98,11 +98,14 @@ class SmoothScrollManager {
     }
 
     init() {
-        // Smooth scroll for anchor links
+        // Smooth scroll for anchor links - FIXED
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 const href = anchor.getAttribute('href');
                 if (href === '#') return;
+                
+                // Double check: only prevent default for actual anchors
+                if (!href.startsWith('#')) return;
                 
                 e.preventDefault();
                 const target = document.querySelector(href);

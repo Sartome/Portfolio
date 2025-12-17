@@ -47,8 +47,11 @@
             <div class="space-y-6">
                 <div class="border-l-4 border-blue-500 pl-6">
                     <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold">BTS SIO - SLAM</h3>
-                        <span class="text-blue-400 font-semibold">2024-2025</span>
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-xl font-bold">BTS SIO - SLAM</h3>
+                            <span class="px-3 py-1 bg-green-600/20 border border-green-600/50 rounded-full text-xs text-green-400 font-semibold">Formation en cours</span>
+                        </div>
+                        <span class="text-blue-400 font-semibold">2024-2026</span>
                     </div>
                     <p class="text-gray-400 mb-2">Lycée Vilgénis, Massy</p>
                     <p class="text-gray-300">
@@ -214,9 +217,21 @@
             <h3 class="text-2xl font-bold mb-4">Intéressé par mon profil ?</h3>
             <p class="text-gray-400 mb-6">N'hésitez pas à me contacter pour discuter d'opportunités ou de collaborations.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="mailto:elarrassmarwane@gmail.com" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all hover-glow">
-                    Envoyer un email
-                </a>
+                <div class="relative">
+                    <button onclick="toggleEmailTooltip('cv-email-tooltip')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all hover-glow">
+                        Envoyer un email
+                    </button>
+                    <!-- Bulle d'information email interactive -->
+                    <div id="cv-email-tooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-sm rounded-lg opacity-0 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-50">
+                        <div class="flex items-center gap-2">
+                            <span id="cv-email-text">elarrassmarwane@gmail.com</span>
+                            <button onclick="copyEmail('cv-email-text')" class="px-2 py-1 bg-blue-600 hover:bg-blue-700 rounded text-xs transition-colors">
+                                Copier
+                            </button>
+                        </div>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                    </div>
+                </div>
                 <a href="https://www.linkedin.com/in/marwane-el-arrass/" target="_blank" class="px-6 py-3 glass hover:bg-white/10 rounded-lg font-semibold transition-all">
                     Me contacter sur LinkedIn
                 </a>
