@@ -50,6 +50,15 @@
                                 </a>
                                 <?php endif; ?>
                                 
+                                <?php if ($project['demo'] !== null): ?>
+                                <a href="<?= htmlspecialchars($project['demo']) ?>" target="_blank" class="flex items-center text-green-400 hover:text-green-300 transition-colors">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                    Voir le site
+                                </a>
+                                <?php endif; ?>
+                                
                                 <button onclick="openProject<?= $index ?>()" class="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
                                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

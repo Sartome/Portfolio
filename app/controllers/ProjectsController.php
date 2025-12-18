@@ -34,6 +34,16 @@ class ProjectsController extends Controller {
                 'featured' => true,
                 'year' => '2025'
             ],
+                        [
+                'title' => 'Marketplace - Sell and Buy',
+                'description' => 'Place de marché complète pour l\'achat et la vente de produits. Interface moderne avec gestion des annonces, panier d\'achat et système de paiement intégré.',
+                'technologies' => ['PHP', 'JavaScript', 'MySQL', 'HTML5', 'CSS3', 'E-commerce'],
+                'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
+                'github' => 'https://github.com/Sartome/sellandbuy',
+                'demo' => 'http://localhost/sellandbuy/',
+                'featured' => true,
+                'year' => '2025'
+            ],
             [
                 'title' => 'SoundFly - Application YouTube',
                 'description' => 'Application web moderne pour la recherche et le téléchargement de vidéos YouTube. Interface intuitive avec API intégrée, recherche avancée et gestion des téléchargements.',
@@ -62,16 +72,6 @@ class ProjectsController extends Controller {
                 'github' => null,
                 'demo' => null,
                 'featured' => false,
-                'year' => '2024'
-            ],
-            [
-                'title' => 'Marketplace - Sell and Buy',
-                'description' => 'Place de marché complète pour l\'achat et la vente de produits. Interface moderne avec gestion des annonces, panier d\'achat et système de paiement intégré.',
-                'technologies' => ['PHP', 'JavaScript', 'MySQL', 'HTML5', 'CSS3', 'E-commerce'],
-                'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
-                'github' => 'https://github.com/Sartome/sellandbuy',
-                'demo' => 'http://localhost/sellandbuy/',
-                'featured' => true,
                 'year' => '2024'
             ],
             [
