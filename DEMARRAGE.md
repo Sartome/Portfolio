@@ -35,21 +35,119 @@ Votre portfolio a été entièrement reconstruit avec une architecture MVC moder
 
 ## 🚀 Démarrage
 
-### Option 1: PHP Built-in Server (Recommandé pour développement)
+### Option 1 : DDEV (Recommandé — environnement Docker)
+
+DDEV offre un environnement de développement identique à la production, sans configurer Apache/PHP manuellement.
+
+#### 1. Prérequis
+
+| Outil | Lien | Note |
+|-------|------|------|
+| Docker Desktop (Windows/macOS) ou Docker + Docker Compose (Linux) | https://www.docker.com/products/docker-desktop | Doit tourner avant `ddev start` |
+| DDEV | https://ddev.readthedocs.io/en/stable/users/install/ | Voir commandes ci-dessous |
+
+```bash
+# Installation DDEV sur Linux/WSL2 :
+curl -fsSL https://ddev.com/install.sh | bash
+
+# Sur macOS avec Homebrew :
+brew install ddev/ddev/ddev
+
+# Sur Windows (PowerShell admin) :
+Set-ExecutionPolicy Bypass -Scope Process -Force
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ddev/ddev/main/scripts/install_ddev_wsl2_docker_inside.ps1'))
+```
+
+#### 2. Initialiser le projet
+
+Depuis la racine du projet :
+
+```bash
+# Configurer DDEV pour ce projet PHP
+ddev config \
+  --project-type=php \
+  --php-version=8.2 \
+  --docroot=public \
+  --project-name=portfolio
+
+# Lancer l'environnement
+ddev start
+```
+
+#### 3. Démarrer et ouvrir le site
+
+```bash
+ddev start          # Démarre les conteneurs
+ddev launch         # Ouvre le navigateur automatiquement
+ddev describe       # Affiche les URLs et les services disponibles
+```
+
+> URL par défaut : **https://portfolio.ddev.site**
+
+#### 4. Commandes DDEV utiles
+
+```bash
+ddev stop           # Arrête les conteneurs
+ddev restart        # Redémarre (utile après modification de config)
+ddev ssh            # Accès shell dans le conteneur PHP
+ddev exec php -v    # Exécuter une commande PHP dans le conteneur
+ddev logs           # Voir les logs du serveur web
+ddev poweroff       # Arrête tous les projets DDEV
+```
+
+#### 5. Configuration DDEV avancée (`.ddev/config.yaml`)
+
+Après `ddev config`, un fichier `.ddev/config.yaml` est créé. Vous pouvez l'éditer pour personnaliser :
+
+```yaml
+name: portfolio
+type: php
+docroot: public
+php_version: "8.2"
+webserver_type: apache-fpm   # ou nginx-fpm
+router_http_port: "80"
+router_https_port: "443"
+hooks:
+  post-start:
+    - exec: "echo 'Projet portfolio démarré !'"
+```
+
+#### 6. Variables d'environnement avec DDEV
+
+Créez un fichier `.ddev/.env` pour les secrets (non versionné) :
+
+```env
+NEWS_API_KEY=votre_cle_newsapi
+APP_ENV=development
+```
+
+Accédez-y dans PHP via `getenv('NEWS_API_KEY')` ou `$_ENV['NEWS_API_KEY']`.
+
+Ou injectez-les directement via `.ddev/config.yaml` :
+
+```yaml
+web_environment:
+  - NEWS_API_KEY=votre_cle_newsapi
+```
+
+---
+
+### Option 2 : PHP Built-in Server (simple, sans Docker)
 
 ```bash
 cd public
 php -S localhost:8000
 ```
 
-Puis ouvrez: `http://localhost:8000`
+Puis ouvrez : `http://localhost:8000`
 
-### Option 2: XAMPP/WAMP/MAMP
+### Option 3 : XAMPP/WAMP/MAMP
 
 1. Copiez le dossier `portfolio` dans `htdocs/`
-2. Accédez à `http://localhost/portfolio`
+2. Accédez à l'adresse du projet (par exemple `http://localhost/portfolio`)
 
-### Option 3: Apache/Nginx
+### Option 4 : Apache/Nginx natif
 
 Le fichier `.htaccess` est déjà configuré pour rediriger vers `public/`
 

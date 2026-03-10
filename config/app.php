@@ -29,6 +29,6 @@ return [
     // Paths
     'paths' => [
         'assets' => '/assets',
-        'old_site' => '/old/index.html',
+        'old_site' => 'https://sartome.github.io/OLD-PORTFOLIO/',
     ],
 ];

@@ -18,6 +18,14 @@ class JourneyController extends Controller {
         
         $this->view('journey', $data);
     }
+
+    /**
+     * Simple JSON API for the timeline (used by React SPA navigation)
+     */
+    public function apiTimeline() {
+        header('Content-Type: application/json');
+        echo json_encode($this->getTimeline());
+    }
     
     /**
      * Get professional timeline

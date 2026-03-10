@@ -149,6 +149,8 @@ Puis activer GitHub Pages dans Settings
 **Problème non résolu?**
 - 📧 Email: elarrassmarwane@gmail.com
 - 🐛 GitHub Issues: [github.com/Sartome/portfolio/issues](https://github.com/Sartome/portfolio/issues)
+
+*Note : le chemin `/portfolio` était utilisé en local (XAMPP). Avec DDEV ou d'autres hôtes, l'application détecte maintenant automatiquement le base path.*
 - 💬 LinkedIn: [Marwane El arrass](https://www.linkedin.com/in/marwane-el-arrass-1b545b323/)
 
 ## ⚡ Commandes Utiles

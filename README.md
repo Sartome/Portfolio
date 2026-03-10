@@ -15,6 +15,26 @@ Portfolio moderne et professionnel construit avec une architecture MVC, sécurit
 - **Configuration centralisée** dans des fichiers dédiés
 
 ### 🎨 Design Moderne avec TailwindCSS
+
+### 🚀 Intégration React
+Ce projet adopte une approche hybride : le serveur PHP continue de rendre les pages et de gérer les données,
+mais certaines sections (par exemple la liste des projets) sont maintenant rendues par **React**
+via un petit composant JSX.
+
+-   la même UI peut ultérieurement être buildée avec Vite.
+- Une API JSON a été ajoutée à `public/api.php` (`/api/projects`) pour alimenter les composants.
+- Un squelette de configuration `package.json`/`vite.config.js` se trouve à la racine, avec un répertoire `frontend/`
+  prêt pour un vrai workflow node.
+
+La restauration progessive permet de moderniser une page à la fois sans réécrire tout le site en une fois.
+
+### Animations et pagination
+- Des utilitaires CSS (`animate-fade-in`, `animate-slide-up`, etc.) sont fournis dans `assets/animations.css` et intégrés dans Tailwind.
+- Le composant React `Reveal` applique automatiquement l'animation d'apparition lors du scroll (IntersectionObserver); il enveloppe les cartes, sections, etc.
+- La page d'accueil a été réécrite en React avec richesse visuelle (hero, compétences, cartes, CTA) et profite pleinement des animations CSS.
+- Chargements asynchrones affichent un **Loader** animé (spinner + texte) grâce aux classes `.page-loader`/`.loader-spinner`.
+- Les listes longues (projets, flux RSS) sont paginées côté client via le composant `Pagination` réutilisable. L'API `/api/projects` supporte aussi les paramètres `page` et `per` si vous préférez charger des pages serveur à l'avenir.
+Dans la version actuelle **toutes les pages** (accueil, CV, projets, veille, parcours, RSS) sont déléguées à React : les vues PHP ne contiennent plus que la structure de base et un `<noscript>` de secours. React reçoit les données initiales via l'attribut `data-props` injecté par le contrôleur et rend l'ensemble de l'UI (navigation comprise). Si JavaScript est désactivé, l'utilisateur voit un message invitant à l'activer.
 - **Interface élégante** avec glassmorphism et gradients
 - **Design responsive** optimisé mobile-first
 - **Animations fluides** avec transitions CSS3
@@ -56,6 +76,18 @@ Portfolio moderne et professionnel construit avec une architecture MVC, sécurit
 ### Frontend
 - **HTML5** - Sémantique et accessible
 - **TailwindCSS** - Framework CSS utility-first
+- **React** - All pages (Accueil, CV, Projets, Veille, Parcours, RSS) are fully rendered by React on the client; the PHP controllers simply inject the initial JSON props and a `data-page` attribute. Navigation is handled by `react-router-dom`, components are split by route and loaded lazily, and shared widgets (NavBar, Loader, Pagination, Reveal, etc.) live under `frontend/src`. This gives a modern SPA feel while preserving server‑side rendering for the first visit and graceful degradation when JS is disabled.
+
+  A modular build system lives in `frontend/`. To compile/optimize the frontend assets run:
+  ```bash
+  cd frontend
+  npm install      # install dependencies (React, react-router-dom, Tailwind etc.)
+  npm run build     # produces optimized files under public/assets/react
+  ```
+  The `Core::reactScriptTag()` helper used in the layout will:
+  * point at the Vite dev server during development (`npm run dev`),
+  * load the production bundle when it exists,
+  * otherwise output a comment (legacy Babel fallback removed).
 - **JavaScript ES6+** - Vanilla JS pour interactions
 - **Google Fonts (Inter)** - Typographie moderne
 

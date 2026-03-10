@@ -1,4 +1,4 @@
-</main>
+    <?= \Core::reactRootEnd() /* closes root container */ ?>
     
     <footer class="mt-20 bg-slate-900/50 border-t border-white/10">
         <div class="container mx-auto px-4 py-12">
@@ -30,7 +30,7 @@
                 <div>
                     <h3 class="text-xl font-bold mb-4">Liens Rapides</h3>
                     <ul class="space-y-2">
-                        <li><a href="<?= url('/') ?>" class="text-gray-400 hover:text-blue-400 transition-colors">Accueil</a></li>
+                        <li><a href="<?= url('/') ?>" class="text-gray-400 hover:text-blue-400 transition-colors" id="footer-home-link">Accueil</a></li>
                         <li><a href="<?= url('/cv') ?>" class="text-gray-400 hover:text-blue-400 transition-colors">Mon CV</a></li>
                         <li><a href="<?= url('/projects') ?>" class="text-gray-400 hover:text-blue-400 transition-colors">Mes Projets</a></li>
                         <li><a href="<?= url('/veille') ?>" class="text-gray-400 hover:text-blue-400 transition-colors">Veille Technologique</a></li>
@@ -73,17 +73,9 @@
     
     <script>
         // ... (Tout votre JS global : menu mobile, back-to-top, etc.) ...
-        // Basculer le menu mobile
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn?.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Bouton retour en haut
+        // legacy mobile menu script removed – React NavBar handles navigation now
+        // Bouton retour en haut (simple vanilla JS)
         const backToTopBtn = document.getElementById('back-to-top');
-        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopBtn?.classList.remove('opacity-0', 'pointer-events-none');
@@ -91,18 +83,21 @@
                 backToTopBtn?.classList.add('opacity-0', 'pointer-events-none');
             }
         });
-        
         backToTopBtn?.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // DEBUG / fix footer home link
+        const footerHome = document.getElementById('footer-home-link');
+        if (footerHome && (!footerHome.getAttribute('href') || footerHome.getAttribute('href').trim()==='')) {
+            const bp = ('<?= $basePath ?>' || '/');
+            footerHome.setAttribute('href', bp);
+            console.log('DEBUG: fixed footer home href to', bp);
+        }
     </script>
     
     <script src="<?= asset('assets/security.js') ?>"></script>
-    
-    <?php if (isset($page) && $page === 'rss'): ?>
-        <script src="<?= asset('assets/rss.js') ?>"></script>
-    <?php elseif (isset($page) && file_exists(__DIR__ . '/../../public/assets/' . $page . '.js')): ?>
-        <script src="<?= asset('assets/'."$page.js") ?>"></script>
-    <?php endif; ?>
+    <!-- React application script (loaded automatically by helper) -->
+    <?= \Core::reactScriptTag() ?>
 </body>
 </html>

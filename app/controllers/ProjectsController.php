@@ -21,8 +21,10 @@ class ProjectsController extends Controller {
     
     /**
      * Get featured projects
+     *
+     * Protected so other parts of the app (like the API router) can reuse it.
      */
-    private function getProjects() {
+    protected function getProjects() {
         return [
             [
                 'title' => 'Portfolio MVC Moderne',
@@ -105,5 +107,32 @@ class ProjectsController extends Controller {
                 'year' => '2023'
             ]
         ];
+    }
+
+    /**
+     * Endpoint helper used by API router.
+     * Echoes the full project list as JSON.
+     */
+    public function apiList()
+    {
+        header('Content-Type: application/json');
+        $all = $this->getProjects();
+
+        // optional paging parameters
+        $page = max(1, intval($_GET['page'] ?? 1));
+        $per = max(0, intval($_GET['per'] ?? 0));
+
+        $total = count($all);
+        if ($per > 0) {
+            $offset = ($page - 1) * $per;
+            $all = array_slice($all, $offset, $per);
+        }
+
+        echo json_encode([
+            'total' => $total,
+            'page' => $page,
+            'per' => $per,
+            'data' => $all
+        ]);
     }
 }

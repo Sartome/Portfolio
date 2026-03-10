@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+frontend/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -9,6 +10,7 @@ package-lock.json
 .DS_Store
 Thumbs.db
 desktop.ini
+.ddev
 
 # IDE
 .vscode/
@@ -30,13 +32,17 @@ logs/
 # Build outputs
 dist/
 build/
-*.min.js
-*.min.css
-
+public/assets/react/
 # Environment variables
 .env
 .env.local
 .env.*.local
+
+# Temporary legacy/unused content
+old/
+assets/style copy.css
+assets/style2.css
+assets/actuality.css
 
 # API Keys (remind to not commit)
 **/config.js

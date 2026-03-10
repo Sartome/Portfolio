@@ -9,16 +9,61 @@ require_once __DIR__ . '/../Controller.php';
 class VeilleController extends Controller {
     
     public function index() {
+        $all = $this->getNpuArticles();
+
+        // filtrage par catégorie si demandé
+        $selectedCategory = null;
+        if (isset($_GET['category']) && $_GET['category'] !== '') {
+            $selectedCategory = $_GET['category'];
+            $all = array_filter($all, function($a) use ($selectedCategory) {
+                return strcasecmp($a['category'], $selectedCategory) === 0;
+            });
+            // réindexer
+            $all = array_values($all);
+        }
+
+        // trouver toutes les catégories disponibles pour l'UI
+        $categories = [];
+        foreach ($this->getNpuArticles() as $article) {
+            $categories[] = $article['category'];
+        }
+        $categories = array_unique($categories);
+
         $data = [
             'title' => 'Veille Technologique - NPU',
             'description' => 'Veille technologique sur les Neural Processing Units (NPU) et leur impact sur l\'IA',
             'page' => 'veille',
-            'articles' => $this->getNpuArticles()
+            'articles' => $all,
+            'categories' => $categories,
+            'selectedCategory' => $selectedCategory
         ];
         
         $this->view('veille', $data);
     }
     
+    /**
+     * JSON API endpoint for the SPA — returns all articles normalised for React.
+     */
+    public function apiList() {
+        header('Content-Type: application/json');
+        $articles = array_map(function($a) {
+            return array_merge($a, [
+                'description' => $a['summary'] ?? '',
+                'source'      => $a['category'] ?? '',
+                'skills'      => $a['tags'] ?? [],
+                'year'        => isset($a['date']) ? substr($a['date'], 0, 4) : null,
+                'url'         => $a['url'] ?? null,
+            ]);
+        }, $this->getNpuArticles());
+
+        $categories = array_values(array_unique(array_column($this->getNpuArticles(), 'category')));
+
+        echo json_encode([
+            'articles'   => $articles,
+            'categories' => $categories,
+        ]);
+    }
+
     /**
      * Get curated NPU articles
      */

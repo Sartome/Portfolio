@@ -49,32 +49,53 @@ class Core {
      * Analyse l'URL pour déterminer le contrôleur, la méthode et les paramètres
      */
     private function parseUrl() {
+        $url = null;
+
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
+        } else {
+            // Fallback : analyser REQUEST_URI pour prendre en charge les requêtes
+            // utilisant uniquement des paramètres de requête (ex : /veille?category=x)
+            $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+            $requestUri = parse_url($requestUri, PHP_URL_PATH);
+
+            // retirer le script name (ex : /portfolio/index.php) ou le dossier public
+            $scriptDir = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? ''), '/\\');
+            if ($scriptDir !== '' && $scriptDir !== '/') {
+                $requestUri = preg_replace('#^' . preg_quote($scriptDir, '#') . '#', '', $requestUri);
+            }
+
+            // retirer eventuel '/public' si présent dans l'URL
+            $requestUri = preg_replace('#^/public#', '', $requestUri);
+
+            $url = trim($requestUri, '/');
+        }
+
+        if ($url !== null && $url !== '') {
             $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            
+            $segments = explode('/', $url);
+
             // Déterminer le contrôleur (Validation Alphanumérique)
-            if (!empty($url[0])) {
-                $controllerName = preg_replace('/[^a-zA-Z0-9]/', '', $url[0]);
+            if (!empty($segments[0])) {
+                $controllerName = preg_replace('/[^a-zA-Z0-9]/', '', $segments[0]);
                 $controller = ucfirst(strtolower($controllerName)) . 'Controller';
-                
+
                 if (file_exists(__DIR__ . '/controllers/' . $controller . '.php')) {
                     $this->currentController = $controller;
-                    unset($url[0]);
+                    unset($segments[0]);
                 }
             }
-            
+
             // Déterminer la méthode (Validation Alphanumérique + underscore)
-            if (isset($url[1]) && !empty($url[1])) {
-                $methodName = preg_replace('/[^a-zA-Z0-9_]/', '', $url[1]);
+            if (isset($segments[1]) && !empty($segments[1])) {
+                $methodName = preg_replace('/[^a-zA-Z0-9_]/', '', $segments[1]);
                 if (!empty($methodName)) {
                     $this->currentMethod = $methodName;
                 }
-                unset($url[1]);
+                unset($segments[1]);
             }
-            
-            $this->params = $url ? array_values($url) : [];
+
+            $this->params = $segments ? array_values($segments) : [];
         }
     }
     
@@ -166,5 +187,135 @@ class Core {
             return array_map([self::class, 'escape'], $data);
         }
         return htmlspecialchars($data ?? '', ENT_QUOTES, 'UTF-8');
+    }
+
+    /**
+     * Output opening tags for React root area.  Returns a string so
+     * it can be echoed in layouts.  The caller is responsible for
+     * closing it via reactRootEnd().
+     *
+     * @param string $page  short page identifier (used by JS router)
+     * @param array $props  associative data to serialize and pass
+     * @return string
+     */
+    public static function reactRootStart($page = '', $props = []) {
+        $p = htmlspecialchars($page ?? '', ENT_QUOTES, 'UTF-8');
+        $json = htmlspecialchars(json_encode($props ?? []), ENT_QUOTES, 'UTF-8');
+        return "<main>\n" .
+               "    <div id=\"react-root\" data-page=\"{$p}\" data-props='{$json}'>\n";
+    }
+
+    /**
+     * Close the tags opened by reactRootStart().
+     * @return string
+     */
+    public static function reactRootEnd() {
+        return "    </div>\n</main>\n";
+    }
+
+    /**
+     * Generate the appropriate <script> tag(s) for the React bundle.
+     *
+     * - If a Vite build exists in public/assets/react/assets/index.js, load
+     *   it as a module.
+     * - Otherwise, if a Vite dev server is reachable on localhost:5173,
+     *   inject the client + module from the server.
+     * - Fallback: use the legacy Babel-based script in assets/js/app.jsx.
+     *
+     * The helper uses the global asset() function if available; if not,
+     * it computes a naive path based on the $basePath variable.
+     *
+     * @return string
+     */
+    /**
+     * Returns a <link> tag for the Vite-built Tailwind CSS, or empty string if not found.
+     */
+    public static function reactStylesheetTag(): string {
+        $asset = function($path) {
+            if (function_exists('asset')) {
+                return asset($path);
+            }
+            $bp = ($GLOBALS['basePath'] ?? '/');
+            if (substr($bp, -1) !== '/') {
+                $bp .= '/';
+            }
+            return $bp . ltrim($path, '/');
+        };
+
+        $builtCss = __DIR__ . '/../public/assets/react/assets/index.css';
+        if (file_exists($builtCss)) {
+            return '<link rel="stylesheet" href="' . $asset('assets/react/assets/index.css') . '">';
+        }
+
+        // Dev server
+        $fp = @fsockopen('localhost', 5173, $errno, $errstr, 0.05);
+        if ($fp) {
+            fclose($fp);
+            return ''; // Vite dev server injects CSS via JS module
+        }
+
+        return ''; // No built CSS found; CDN fallback handled in header
+    }
+
+    /**
+     * Returns <script> tags for React / Babel CDN only when needed (Babel fallback mode).
+     * When the Vite bundle or dev server is available, returns empty string.
+     */
+    public static function reactCdnScripts(): string {
+        $builtPath = __DIR__ . '/../public/assets/react/assets/index.js';
+        if (file_exists($builtPath)) {
+            return ''; // Vite bundle is present — no CDN needed
+        }
+        $fp = @fsockopen('localhost', 5173, $errno, $errstr, 0.05);
+        if ($fp) { fclose($fp); return ''; } // Vite dev server — no CDN needed
+        if (!file_exists(__DIR__ . '/../public/assets/js/app.jsx')) {
+            return ''; // nothing to fall back to
+        }
+        // Babel fallback — load UMD React + Babel transpiler
+        return implode("\n", [
+            '<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>',
+            '<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>',
+            '<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>',
+        ]);
+    }
+
+    public static function reactScriptTag() {
+        // helper to resolve asset paths
+        $asset = function($path) {
+            if (function_exists('asset')) {
+                return asset($path);
+            }
+            // rudimentary fallback: assume $basePath has been set globally
+            $bp = ($GLOBALS['basePath'] ?? '/');
+            if (substr($bp, -1) !== '/') {
+                $bp .= '/';
+            }
+            return $bp . ltrim($path, '/');
+        };
+
+        $builtPath = __DIR__ . '/../public/assets/react/assets/index.js';
+        if (file_exists($builtPath)) {
+            return '<script type="module" src="' . $asset('assets/react/assets/index.js') . '"></script>';
+        }
+
+        // detect dev server
+        $dev = false;
+        $fp = @fsockopen('localhost', 5173, $errno, $errstr, 0.05);
+        if ($fp) {
+            $dev = true;
+            fclose($fp);
+        }
+        if ($dev) {
+            // during development, point at the Vite server for HMR
+            // vite.config.js sets root:'./frontend', so entry is /src/main.jsx
+            return '<script type="module" src="http://localhost:5173/@vite/client"></script>' . "\n"
+                 . '<script type="module" src="http://localhost:5173/src/main.jsx"></script>';
+        }
+
+        $fallbackPath = $asset('assets/js/app.jsx');
+        if (file_exists(__DIR__ . '/../public/assets/js/app.jsx')) {
+            return '<script type="text/babel" src="' . $fallbackPath . '"></script>';
+        }
+        return '<!-- React bundle not found; run `npm run build` or start the dev server -->';
     }
 }
