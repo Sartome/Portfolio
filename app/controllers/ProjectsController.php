@@ -42,7 +42,7 @@ class ProjectsController extends Controller {
                 'technologies' => ['PHP', 'JavaScript', 'MySQL', 'HTML5', 'CSS3', 'E-commerce'],
                 'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
                 'github' => 'https://github.com/Sartome/sellandbuy',
-                'demo' => 'http://localhost/sellandbuy/',
+                'demo' => 'https://sellandbuy.ddev.site/',
                 'featured' => true,
                 'year' => '2025'
             ],
