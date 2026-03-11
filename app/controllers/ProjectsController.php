@@ -82,7 +82,7 @@ class ProjectsController extends Controller {
                 'technologies' => ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Administration'],
                 'image' => 'https://i.ytimg.com/vi/QB7JwYCHyD4/maxresdefault.jpg',
                 'github' => 'https://github.com/Sartome/digital-zoo',
-                'demo' => 'http://localhost/digital-zoo/login.php',
+                'demo' => 'https://digital-zoo.ddev.site/login.php',
                 'featured' => true,
                 'year' => '2024'
             ],
