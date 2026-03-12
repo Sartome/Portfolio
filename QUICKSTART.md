@@ -1,174 +1,172 @@
-# 🚀 Quick Start Guide
+﻿# Quick Start Guide
 
-## Démarrage Rapide (3 minutes)
+## Démarrage en 3 minutes
 
-### 1️⃣ Ouvrir le Portfolio
+### Option A — Avec DDEV (recommandé)
+
 ```bash
-# Option 1: Python
-python -m http.server 8000
+# 1. Démarrer l'environnement Docker
+ddev start
 
-# Option 2: PHP  
+# 2. Installer les dépendances npm et compiler le SPA React
+npm install
+npm run build
+
+# 3. Ouvrir dans le navigateur
+ddev launch
+```
+
+### Option B — Sans DDEV (PHP built-in)
+
+```bash
+# Compiler d'abord le frontend
+npm install
+npm run build
+
+# Lancer le serveur PHP depuis le dossier public/
+cd public
 php -S localhost:8000
-
-# Option 3: Node.js
-npx http-server
 ```
 
-Puis ouvrir: `http://localhost:8000`
+Puis ouvrir : `http://localhost:8000`
 
-### 2️⃣ Configurer les Actualités (Optionnel)
+---
 
-**Option A: Flux RSS (recommandé)**
-1. **Utiliser Google Alerts** (déjà configuré)
-   - Le flux est déjà configuré dans `app/controllers/RssController.php`
-   - URL: `https://www.google.fr/alerts/feeds/06235267178635802820/7750195999628698780`
-   - Supporte les flux Atom et RSS automatiquement
+## Développement Frontend (Vite HMR)
 
-2. **Changer le flux RSS**
-   - Modifier l'URL dans `app/controllers/RssController.php` ligne 40
-   - Exemple: `$this->fetchFromRSS("https://votre-flux-rss.com/feed")`
-
-**Option B: NewsAPI**
-1. **Obtenir une clé API**
-   - Aller sur [newsapi.org](https://newsapi.org)
-   - Créer un compte gratuit
-   - Copier votre clé API
-
-2. **Configurer la clé**
-   - Ouvrir `config/app.php`
-   - Remplacer `YOUR_API_KEY_HERE` dans `newsapi_key`
-   ```php
-   'newsapi_key' => 'votre-cle-ici',
-   ```
-
-3. **Activer NewsAPI**
-   - Dans `app/controllers/RssController.php`, commenter la ligne RSS et décommenter le bloc NewsAPI
-
-### 3️⃣ Fonctionnalités Activées
-
-✅ **Automatiquement disponibles:**
-- Theme clair/sombre (bouton en haut à droite ☀️/🌙)
-- Scroll progressif (barre en haut)
-- Retour en haut (bouton en bas à droite ↑)
-- Animations et transitions
-- Mode PWA (installable)
-- Sécurité renforcée
-- Lazy loading
-- Notifications
-
-## 🎨 Personnalisation Rapide
-
-### Changer les Couleurs
-`assets/style.css` - lignes 1-18:
-```css
-:root {
-    --accent-primary: #16AAD9;    /* Votre couleur principale */
-    --accent-secondary: #1E7AEE;  /* Votre couleur secondaire */
-}
-```
-
-### Ajouter un Projet
-`index.html` - dans la section appropriée:
-```html
-<a href="VOTRE_PROJET/index.html" class="bouton">Mon Projet</a>
-```
-
-### Modifier le Nom
-`index.html` - ligne 56:
-```html
-<h1 data-splitting>Votre Nom</h1>
-```
-
-## 🔧 Résolution Problèmes Courants
-
-### Les actualités ne chargent pas
-- ✅ Vérifier la clé API dans `config/app.php` (si NewsAPI utilisée)
-- ✅ Ouvrir la console (F12) pour voir les erreurs
-- ✅ Vérifier la connexion internet
-- ✅ **Débogage RSS**: Tester le flux directement dans `app/controllers/RssController.php`
-- ✅ **Flux Google Alerts**: Le parser supporte maintenant les flux Atom et RSS
-- ✅ **Erreur JSON**: Si "Unexpected token '<'", vérifier que le flux retourne bien du XML
-
-### Le thème ne change pas
-- ✅ Rafraîchir la page (Ctrl+F5)
-- ✅ Vérifier que `modern-features.js` est chargé
-- ✅ Effacer le cache du navigateur
-
-### Les animations ne fonctionnent pas
-- ✅ Vérifier que `modern-features.css` est inclus
-- ✅ Désactiver "prefers-reduced-motion" si actif
-- ✅ Tester dans un autre navigateur
-
-## 📱 Installation PWA
-
-### Chrome/Edge
-1. Cliquer sur l'icône ⊕ dans la barre d'adresse
-2. Cliquer "Installer"
-
-### Firefox
-1. Menu > "Installer ce site comme application"
-
-### Safari (iOS)
-1. Bouton Partager
-2. "Sur l'écran d'accueil"
-
-## 🛡️ Sécurité
-
-### Déjà Protégé Contre:
-- ✅ XSS (Cross-Site Scripting)
-- ✅ Clickjacking
-- ✅ CSRF (Cross-Site Request Forgery)
-- ✅ Injection de code
-- ✅ URLs malveillantes
-- ✅ Rate limiting sur API
-
-### À Faire pour Production:
-- [ ] Configurer HTTPS (Let's Encrypt)
-- [ ] Ajouter un vrai token CSRF backend
-- [ ] Configurer les headers de sécurité serveur
-- [ ] Mettre la clé API dans une variable d'environnement
-
-## 🚀 Déploiement Rapide
-
-### GitHub Pages
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin votre-repo-url
-git push -u origin main
-```
-Puis activer GitHub Pages dans Settings
-
-### Netlify (le plus simple)
-1. Drag & drop le dossier sur [netlify.com/drop](https://app.netlify.com/drop)
-2. C'est tout! 🎉
-
-## 📞 Support
-
-**Problème non résolu?**
-- 📧 Email: elarrassmarwane@gmail.com
-- 🐛 GitHub Issues: [github.com/Sartome/portfolio/issues](https://github.com/Sartome/portfolio/issues)
-
-*Note : le chemin `/portfolio` était utilisé en local (XAMPP). Avec DDEV ou d'autres hôtes, l'application détecte maintenant automatiquement le base path.*
-- 💬 LinkedIn: [Marwane El arrass](https://www.linkedin.com/in/marwane-el-arrass-1b545b323/)
-
-## ⚡ Commandes Utiles
+Pour travailler sur les composants React avec rechargement automatique :
 
 ```bash
-# Voir les fichiers
-ls -la
+npm run dev          # démarre le serveur Vite sur http://localhost:5173
+```
 
-# Chercher du texte
-grep -r "texte" .
+Le helper `Core::reactScriptTag()` dans `header.php` bascule automatiquement entre le serveur Vite (dev) et le bundle compilé (prod).
 
-# Voir la taille du projet
-du -sh .
+Quand les modifications sont prêtes :
 
-# Nettoyer le cache git
-git clean -fd
+```bash
+npm run build        # compile dans public/assets/react/
 ```
 
 ---
 
-**🎯 Prochain Objectif:** Lire le [README.md](README.md) complet pour découvrir toutes les fonctionnalités!
+## Configurer le Flux RSS
+
+Le flux Google Alerts est actif par défaut dans `app/controllers/RssController.php`.
+
+**Changer de flux :**
+- Modifier l'URL dans `RssController.php` (~ligne 40)
+- Les formats Atom et RSS sont tous les deux supportés automatiquement
+
+**Activer NewsAPI à la place :**
+1. Créer un compte sur [newsapi.org](https://newsapi.org) et copier la clé
+2. Ouvrir `config/app.php` et renseigner :
+   ```php
+   'newsapi_key' => 'votre-cle-ici',
+   ```
+3. Dans `RssController.php`, commenter le bloc RSS et décommenter le bloc NewsAPI
+
+---
+
+## Ajouter / Modifier du Contenu
+
+| Ce que vous voulez changer | Où modifier |
+|---|---|
+| Données projets | `app/controllers/ProjectsController.php` → méthode `apiList()` |
+| Timeline parcours | `app/controllers/JourneyController.php` → méthode `apiTimeline()` |
+| Articles veille | `app/controllers/VeilleController.php` → méthode `apiList()` |
+| Infos CV | `frontend/src/pages/CV.jsx` |
+| Présentation accueil | `frontend/src/pages/Home.jsx` |
+| Navigation | `frontend/src/components/NavBar.jsx` |
+| Couleurs Tailwind | `tailwind.config.js` + `assets/style.css` |
+
+---
+
+## Résolution de Problèmes Courants
+
+### La page affiche du HTML brut sans style
+- Le build frontend n'a pas été généré → lancer `npm run build`
+- Vérifier que `public/assets/react/assets/index.js` existe
+
+### Les actualités RSS ne chargent pas
+- Ouvrir la DevTools (F12) → onglet Réseau → chercher `/api/rss/fetch`
+- Vérifier les logs DDEV : `ddev logs`
+- Tester l'URL du flux directement dans le navigateur
+- Si le flux renvoie du XML mais que l'API renvoie une erreur JSON : vérifier `RssController.php`
+
+### React ne se monte pas
+- JavaScript désactivé → activer JS dans le navigateur
+- Vérifier la console navigateur pour les erreurs de chargement du bundle
+- Rebuilder : `npm run build`
+
+### Erreur 404 sur toutes les routes
+- Le `mod_rewrite` Apache doit être activé
+- Vérifier que `.htaccess` est bien présent dans `public/`
+- Avec DDEV : `ddev restart`
+
+### La clé API NewsAPI expire / quota dépassé
+- Compte gratuit : 100 requêtes/jour
+- Passer en flux RSS : commenter le bloc NewsAPI dans `RssController.php`
+
+---
+
+## Structure des API
+
+```
+GET /api/projects             → liste JSON des projets
+GET /api/projects?page=1&per=6 → liste paginée
+GET /api/rss/fetch            → articles RSS/Atom
+GET /api/journey              → étapes de la timeline
+GET /api/veille               → articles de veille
+```
+
+---
+
+## Déploiement Rapide
+
+### Hébergement mutualisé (Apache)
+```bash
+# 1. Builder localement
+npm run build
+
+# 2. Uploader TOUT le dossier (sauf node_modules et frontend/node_modules)
+# 3. Pointer le DocumentRoot sur public/
+# 4. Vérifier que mod_rewrite est activé
+```
+
+**Avant de mettre en production :**
+```php
+// config/app.php
+'debug' => false,
+'app_url' => 'https://votre-domaine.com',
+```
+
+### GitHub Pages / Netlify
+Non recommandé directement (nécessite PHP). Préférer un VPS ou hébergement mutualisé avec PHP 8+.
+
+---
+
+## Commandes Utiles
+
+```bash
+# Démarrer / arrêter DDEV
+ddev start
+ddev stop
+
+# Voir les logs serveur
+ddev logs
+
+# Lancer un shell dans le container
+ddev ssh
+
+# Rebuilder uniquement le frontend
+npm run build
+
+# Nettoyer le build
+Remove-Item -Recurse -Force public/assets/react   # PowerShell
+rm -rf public/assets/react                         # bash
+```
+
+---
+
+**Prochaine étape :** consulter le [README.md](README.md) pour la documentation complète.
