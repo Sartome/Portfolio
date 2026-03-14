@@ -65,13 +65,13 @@ export default function NavBar({ page }) {
       />
 
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] sm:w-[85%] max-w-5xl rounded-full ${
           scrolled
-            ? 'bg-slate-900/85 backdrop-blur-xl shadow-lg shadow-black/25 border-b border-white/[0.06]'
-            : 'bg-transparent'
+            ? 'top-4 bg-slate-900/60 backdrop-blur-2xl shadow-xl shadow-neon-cyan/10 border border-white/10'
+            : 'top-6 bg-transparent border border-transparent'
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+        <div className="px-5 sm:px-8 py-3 flex items-center justify-between">
           {/* ── Logo ── */}
           <a
             href={`${BASE()}/`}

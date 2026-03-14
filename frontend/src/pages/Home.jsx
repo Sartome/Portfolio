@@ -126,8 +126,12 @@ export default function Home() {
   return (
     <>
       {/* ═══════════════════════════════ HERO ═══════════════════════════════ */}
-      <section className="container mx-auto px-4 pt-16 pb-24">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="container mx-auto px-4 pt-16 pb-24 relative overflow-visible">
+        {/* Glow Effects - Background Blobs */}
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-neon-violet/30 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           {/* Badge statut */}
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-gray-400 mb-8">
@@ -138,42 +142,43 @@ export default function Home() {
 
           {/* Nom */}
           <Reveal delay={80}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-5 tracking-tight">
-              <span className="gradient-text-animated">Marwane El arrass</span>
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-black mb-5 tracking-tighter leading-[1.1]">
+              <span className="gradient-text-animated block">Marwane</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500">El arrass</span>
             </h1>
           </Reveal>
 
           {/* Sous-titre avec typewriter */}
           <Reveal delay={160}>
-            <p className="text-2xl md:text-3xl text-gray-300 mb-5 min-h-[2.5rem] font-light">
+            <p className="text-2xl md:text-3xl text-gray-300 mb-6 min-h-[3rem] font-light tracking-wide">
               {typedRole}
-              {!typingDone && <span className="animate-blink text-blue-400 ml-0.5">|</span>}
+              {!typingDone && <span className="animate-blink text-neon-cyan ml-1">_</span>}
             </p>
           </Reveal>
 
           {/* Description */}
           <Reveal delay={240}>
-            <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
               Passionné par les technologies modernes, la sécurité web et l'innovation.
-              Spécialisé en développement d'applications robustes et performantes.
+              Spécialisé en développement d'applications robustes et <span className="text-gray-200 font-medium">performantes</span>.
             </p>
           </Reveal>
 
           {/* CTA */}
           <Reveal delay={320}>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
               <a href={`${base}/projects`} className="btn-primary">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 Voir mes projets
               </a>
-              <a href={`${base}/cv`} className="btn-ghost">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <a href={`${base}/cv`} className="btn-ghost !px-8 hover:border-gray-300 hover:text-white">
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                Mon CV
+                Mon CV détaillé
               </a>
             </div>
           </Reveal>

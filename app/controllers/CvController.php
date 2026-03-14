@@ -78,9 +78,9 @@ class CvController extends Controller {
     public function download() {
         // Try multiple filename variants
         $candidates = [
-            __DIR__ . '/../../assets/CV alternance.pdf',
-            __DIR__ . '/../../assets/cv_alternance.pdf',
-            __DIR__ . '/../../assets/CV_alternance.pdf',
+            __DIR__ . '/../../public/assets/CV alternance.pdf',
+            __DIR__ . '/../../public/assets/cv_alternance.pdf',
+            __DIR__ . '/../../public/assets/CV_alternance.pdf',
         ];
 
         foreach ($candidates as $file) {
@@ -88,6 +88,8 @@ class CvController extends Controller {
                 header('Content-Type: application/pdf');
                 header('Content-Disposition: attachment; filename="CV_Marwane_ElArrass.pdf"');
                 header('Content-Length: ' . filesize($file));
+                ob_clean();
+                flush();
                 readfile($file);
                 exit;
             }
@@ -119,7 +121,7 @@ class CvController extends Controller {
         }
 
         $entry    = $allowed[$name];
-        $filePath = __DIR__ . '/../../assets/' . $entry['file'];
+        $filePath = __DIR__ . '/../../public/assets/' . $entry['file'];
 
         if (!file_exists($filePath)) {
             http_response_code(404);
@@ -130,6 +132,8 @@ class CvController extends Controller {
         header('Content-Type: application/pdf');
         header('Content-Disposition: attachment; filename="' . $entry['download'] . '"');
         header('Content-Length: ' . filesize($filePath));
+        ob_clean();
+        flush();
         readfile($filePath);
         exit;
     }

@@ -21,23 +21,27 @@ function encodeHTMLEntities(text) {
  */
 function sanitizeURL(url) {
     if (typeof url !== 'string' || !url) return '#';
-    
+
     const urlLower = url.toLowerCase().trim();
     const dangerousProtocols = ['javascript:', 'data:', 'vbscript:', 'file:'];
-    
+
     for (let protocol of dangerousProtocols) {
         if (urlLower.startsWith(protocol)) {
             console.warn('Blocked dangerous URL protocol:', url);
             return '#';
         }
     }
-    
-    // N'accepter que http, https, ou les liens relatifs
-    if (!urlLower.startsWith('http://') && !urlLower.startsWith('https://') && !urlLower.startsWith('/')) {
-        // Supposer que c'est un lien externe sans protocole
+
+    const isSafeProtocol = urlLower.startsWith('http://') ||
+                           urlLower.startsWith('https://') ||
+                           urlLower.startsWith('mailto:') ||
+                           urlLower.startsWith('tel:') ||
+                           urlLower.startsWith('/');
+
+    if (!isSafeProtocol) {
         return 'https://' + url;
     }
-    
+
     return url;
 }
 
@@ -71,16 +75,20 @@ function sanitizeNewsArticle(article) {
     if (!article || typeof article !== 'object') {
         return null;
     }
-    
-    // Le contrôleur PHP a déjà nettoyé les données, 
-    // mais nous re-validons côté client par principe de "défense en profondeur".
+
+    const stripHTML = (html) => {
+        if (typeof html !== 'string') return '';
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        return doc.body.textContent || '';
+    };
+
     return {
-        title: article.title || 'Titre indisponible',
-        description: article.description || 'Description indisponible',
-        image: sanitizeImageURL(article.image), // Re-valide l'URL de l'image
+        title: stripHTML(article.title) || 'Titre indisponible',
+        description: stripHTML(article.description) || 'Description indisponible',
+        image: sanitizeImageURL(article.image),
         publishedAt: article.publishedAt || new Date().toISOString(),
-        url: sanitizeURL(article.url), // Re-valide l'URL du lien
-        source: article.source || 'Source inconnue'
+        url: sanitizeURL(article.url),
+        source: encodeHTMLEntities(article.source) || 'Source inconnue'
     };
 }
 
